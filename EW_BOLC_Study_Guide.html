@@ -89,6 +89,16 @@ blockquote{margin:14px 0; padding:8px 16px; background:var(--soft2); border-left
   font-size:20px; box-shadow:0 6px 18px rgba(18,58,92,.32); opacity:.9;}
 .backtop:hover{opacity:1;}
 @media(max-width:820px){.layout{grid-template-columns:1fr;} .sidebar{position:static; max-height:none; border-right:none; border-bottom:1px solid var(--line);}}
+
+.dl-btn{display:inline-flex; align-items:center; gap:8px; margin-top:16px; background:#fff; color:var(--accent);
+  text-decoration:none; font-weight:600; font-size:14px; padding:10px 18px; border-radius:10px;
+  box-shadow:0 4px 14px rgba(0,0,0,.18); transition:transform .12s ease, box-shadow .12s ease;}
+.dl-btn:hover{transform:translateY(-1px); box-shadow:0 7px 20px rgba(0,0,0,.24);}
+.dl-btn svg{width:17px; height:17px;}
+.dl-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center;}
+.dl-note{margin-top:12px; color:#cfe0f0; font-size:12.5px;}
+@media print{.dl-btn,.dl-note{display:none !important;}}
+
 </style>
 </head>
 <body>
@@ -298,6 +308,13 @@ blockquote{margin:14px 0; padding:8px 16px; background:var(--soft2); border-left
         <h1>Electromagnetic Warfare (EW) BOLC</h1>
         <p>Comprehensive Exam Study Guide &middot; synthesized from all 22 course documents</p>
         <span class="tag">UNCLASSIFIED &middot; 6 study blocks &middot; 52-question self-test</span>
+        <div class="dl-row">
+          <a class="dl-btn" href="EW_BOLC_Study_Guide.pdf" download>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Download PDF (30 pages, print-ready)
+          </a>
+        </div>
+        <p class="dl-note">Also available: <a href="EW_BOLC_Study_Guide.md" style="color:#fff;text-decoration:underline;">Markdown source</a></p>
       </div>
       
 <p><strong>Course:</strong> 17A/17-series Cyber &amp; Electromagnetic Warfare Basic Officer Leader Course (BOLC)
