@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electromagnetic Warfare (EW) BOLC — Study Guide</title>
+<style>
+:root{
+  --ink:#1a2332; --muted:#5b6b82; --line:#dce3ec; --bg:#ffffff;
+  --accent:#1f4e79; --accent2:#2e6da4; --soft:#f4f7fb; --soft2:#eaf1f8;
+  --warn:#8a5a00; --code:#0b3d5c;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; color:var(--ink); background:var(--bg);
+  font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+.layout{display:grid; grid-template-columns:290px 1fr; gap:40px; align-items:start;}
+/* Sidebar TOC */
+.sidebar{
+  position:sticky; top:0; max-height:100vh; overflow-y:auto;
+  padding:26px 18px 40px 0; border-right:1px solid var(--line);
+}
+.sidebar h2{font-size:12px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); margin:0 0 12px;}
+.sidebar .toc>ul{margin:0; padding:0;}
+.sidebar ul{list-style:none; margin:0; padding:0;}
+.sidebar li{margin:1px 0;}
+.sidebar a{color:var(--muted); text-decoration:none; font-size:13.5px; display:block; padding:4px 10px; border-radius:7px; line-height:1.35;}
+.sidebar a:hover{background:var(--soft2); color:var(--accent);}
+.sidebar .toc>ul>li>a{color:var(--ink); font-weight:600; margin-top:8px;}
+.sidebar .toc ul ul a{padding-left:20px; font-size:12.5px;}
+.sidebar .toc ul ul ul{display:none;}
+/* Main content */
+main{padding:26px 0 80px; min-width:0;}
+.hero{
+  background:linear-gradient(135deg,var(--accent) 0%,#123a5c 100%);
+  color:#fff; border-radius:16px; padding:34px 36px; margin:14px 0 34px;
+  box-shadow:0 10px 30px rgba(18,58,92,.18);
+}
+.hero h1{margin:0 0 6px; font-size:30px; line-height:1.15; letter-spacing:-.01em;}
+.hero p{margin:6px 0 0; color:#cfe0f0; font-size:14.5px;}
+.hero .tag{display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.25);
+  padding:4px 12px; border-radius:999px; font-size:12px; margin-top:14px; letter-spacing:.03em;}
+h1{font-size:23px; margin:46px 0 4px; padding-top:18px; border-top:3px solid var(--accent); color:var(--accent); letter-spacing:-.01em;}
+h1:first-of-type{border-top:none; padding-top:0; margin-top:0;}
+h2{font-size:19.5px; margin:34px 0 10px; color:var(--ink); padding-bottom:6px; border-bottom:1px solid var(--line);}
+h3{font-size:16.5px; margin:22px 0 8px; color:var(--accent2);}
+h4{font-size:14.5px; margin:16px 0 6px; color:var(--ink); text-transform:uppercase; letter-spacing:.03em;}
+p{margin:9px 0;}
+ul,ol{margin:9px 0 9px; padding-left:22px;}
+li{margin:4px 0;}
+strong{color:#0e2233;}
+hr{border:none; border-top:1px solid var(--line); margin:34px 0;}
+a{color:var(--accent2);}
+code{background:var(--soft2); color:var(--code); padding:1px 6px; border-radius:5px; font-size:.9em;
+  font-family:"SF Mono",Menlo,Consolas,monospace;}
+table{border-collapse:collapse; width:100%; margin:16px 0; font-size:14px; overflow:hidden;
+  border-radius:10px; box-shadow:0 0 0 1px var(--line);}
+th{background:var(--accent); color:#fff; text-align:left; padding:9px 12px; font-weight:600; font-size:13px;
+  letter-spacing:.02em;}
+td{padding:8px 12px; border-top:1px solid var(--line); vertical-align:top;}
+tr:nth-child(even) td{background:var(--soft);}
+blockquote{margin:14px 0; padding:8px 16px; background:var(--soft2); border-left:4px solid var(--accent2);
+  border-radius:0 8px 8px 0; color:var(--muted); font-style:italic;}
+/* Print */
+@media print{
+  .sidebar,.backtop{display:none !important;}
+  .layout{grid-template-columns:1fr; gap:0;}
+  body{font-size:10.5pt; line-height:1.4;}
+  .wrap{max-width:none; padding:0;}
+  main{padding:0;}
+  .hero{background:var(--accent) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+    box-shadow:none; border-radius:0; padding:22px 24px; margin:0 0 18px;}
+  .hero h1{font-size:20pt;}
+  h1{font-size:15pt; page-break-after:avoid; border-top:2px solid var(--accent);}
+  h2{font-size:13pt; page-break-after:avoid;}
+  h3,h4{page-break-after:avoid;}
+  table,tr,img,blockquote{page-break-inside:avoid;}
+  th{background:var(--accent) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  tr:nth-child(even) td{background:#f2f2f2 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  a{color:var(--ink); text-decoration:none;}
+  @page{margin:14mm 14mm 16mm;}
+}
+.backtop{position:fixed; right:22px; bottom:22px; background:var(--accent); color:#fff; text-decoration:none;
+  width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:20px; box-shadow:0 6px 18px rgba(18,58,92,.32); opacity:.9;}
+.backtop:hover{opacity:1;}
+@media(max-width:820px){.layout{grid-template-columns:1fr;} .sidebar{position:static; max-height:none; border-right:none; border-bottom:1px solid var(--line);}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>Contents</h2>
+      <div class="toc"><div class="toc">
+<ul>
+<li><a href="#electromagnetic-warfare-ew-bolc-comprehensive-study-guide">Electromagnetic Warfare (EW) BOLC — Comprehensive Study Guide</a><ul>
+<li><a href="#how-to-use-this-guide">How to Use This Guide</a></li>
+</ul>
+</li>
+<li><a href="#block-1-ew-history-doctrine">BLOCK 1 — EW HISTORY &amp; DOCTRINE</a><ul>
+<li><a href="#1-evolution-of-electronicelectromagnetic-warfare-112-bolcew01">1. Evolution of Electronic/Electromagnetic Warfare (112-BOLCEW01)</a><ul>
+<li><a href="#11-pre-world-war-i-foundational-events">1.1 Pre-World War I (Foundational Events)</a></li>
+<li><a href="#12-world-war-i-19141918">1.2 World War I (1914–1918)</a></li>
+<li><a href="#13-interwar-world-war-ii">1.3 Interwar &amp; World War II</a></li>
+<li><a href="#14-cold-war-korea-vietnam">1.4 Cold War, Korea, Vietnam</a></li>
+<li><a href="#15-1990spresent">1.5 1990s–Present</a></li>
+<li><a href="#16-overarching-historical-lesson-from-case-studies-monograph-maj-henke">1.6 Overarching Historical Lesson (from "Case Studies" monograph — MAJ Henke)</a></li>
+</ul>
+</li>
+<li><a href="#2-army-cema-ew-doctrine-new-army-cema-doctrine-112-bolcew03">2. Army CEMA &amp; EW Doctrine (NEW Army CEMA Doctrine — 112-BOLCEW03)</a><ul>
+<li><a href="#21-core-definitions">2.1 Core Definitions</a></li>
+<li><a href="#22-related-concepts">2.2 Related Concepts</a></li>
+<li><a href="#23-key-cemaew-publications">2.3 Key CEMA/EW Publications</a></li>
+<li><a href="#24-cema-force-structure-corps-and-below">2.4 CEMA Force Structure (Corps and Below)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#block-2-ems-electromagnetic-wave-fundamentals">BLOCK 2 — EMS &amp; ELECTROMAGNETIC WAVE FUNDAMENTALS</a><ul>
+<li><a href="#3-introduction-to-the-electromagnetic-spectrum-112-bolcew02">3. Introduction to the Electromagnetic Spectrum (112-BOLCEW02)</a><ul>
+<li><a href="#31-wave-characteristics">3.1 Wave Characteristics</a></li>
+<li><a href="#32-the-ems-sorted-by-frequency-low-high">3.2 The EMS (sorted by frequency, low → high)</a></li>
+<li><a href="#33-rf-sub-bands-where-we-operate-memorize-order">3.3 RF Sub-Bands ("Where We Operate" — memorize order)</a></li>
+</ul>
+</li>
+<li><a href="#4-fundamentals-of-em-waves-bolcew06">4. Fundamentals of EM Waves (BOLCEW06)</a><ul>
+<li><a href="#41-what-is-an-em-wave">4.1 What is an EM Wave?</a></li>
+<li><a href="#42-wave-formulas-must-memorize">4.2 Wave Formulas (MUST MEMORIZE)</a></li>
+<li><a href="#43-fields">4.3 Fields</a></li>
+<li><a href="#44-polarization">4.4 Polarization</a></li>
+<li><a href="#45-em-wave-interactions-memorize-the-4-core-free-space-loss-doppler">4.5 EM Wave Interactions (memorize the 4 core + Free Space Loss + Doppler)</a></li>
+</ul>
+</li>
+<li><a href="#5-radio-wave-propagation-bolcew07">5. Radio Wave Propagation (BOLCEW07)</a><ul>
+<li><a href="#51-free-space-vs-on-earth">5.1 Free Space vs. On Earth</a></li>
+<li><a href="#52-transmission-paths">5.2 Transmission Paths</a></li>
+<li><a href="#53-atmosphere-layers">5.3 Atmosphere Layers</a></li>
+<li><a href="#54-wave-degradation-transmission-losses">5.4 Wave Degradation / Transmission Losses</a></li>
+<li><a href="#55-emi">5.5 EMI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#block-3-ew-math">BLOCK 3 — EW MATH</a><ul>
+<li><a href="#6-logarithms-112-bolcew05">6. Logarithms (112-BOLCEW05)</a><ul>
+<li><a href="#61-exponentiation-rules-base-10">6.1 Exponentiation Rules (base 10)</a></li>
+<li><a href="#62-logarithms">6.2 Logarithms</a></li>
+<li><a href="#63-logarithmic-rules">6.3 Logarithmic Rules</a></li>
+</ul>
+</li>
+<li><a href="#7-decibels-112-bolcew05-high-yield">7. Decibels (112-BOLCEW05) — HIGH-YIELD</a><ul>
+<li><a href="#71-power-ratio-decibel-definition">7.1 Power Ratio &amp; Decibel Definition</a></li>
+<li><a href="#72-the-3s-and-10s-rules-of-thumb-memorize">7.2 The "3s and 10s" Rules of Thumb (memorize)</a></li>
+<li><a href="#73-power-levels-dbw-and-dbm">7.3 Power Levels — dBW and dBm</a></li>
+<li><a href="#74-rules-for-manipulation">7.4 Rules for Manipulation</a></li>
+<li><a href="#75-gain-and-loss">7.5 Gain and Loss</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#block-4-radio-antenna-sdr-systems">BLOCK 4 — RADIO, ANTENNA &amp; SDR SYSTEMS</a><ul>
+<li><a href="#8-fundamentals-of-radio-communications-112-bolcew08">8. Fundamentals of Radio Communications (112-BOLCEW08)</a><ul>
+<li><a href="#81-layers-components">8.1 Layers &amp; Components</a></li>
+<li><a href="#82-duplexing">8.2 Duplexing</a></li>
+<li><a href="#83-modulation-mixing">8.3 Modulation &amp; Mixing</a></li>
+<li><a href="#84-selective-squelch">8.4 Selective Squelch</a></li>
+<li><a href="#85-comsec-frequency-hopping">8.5 COMSEC &amp; Frequency Hopping</a></li>
+<li><a href="#86-cots-radio-services">8.6 COTS Radio Services</a></li>
+<li><a href="#87-common-military-radios-know-band-echelon">8.7 Common Military Radios (know band + echelon)</a></li>
+<li><a href="#88-common-sdrs-intro">8.8 Common SDRs (intro)</a></li>
+</ul>
+</li>
+<li><a href="#9-antenna-theory-112-bolcew09">9. Antenna Theory (112-BOLCEW09)</a><ul>
+<li><a href="#91-fundamentals">9.1 Fundamentals</a></li>
+<li><a href="#92-key-electrical-concepts">9.2 Key Electrical Concepts</a></li>
+<li><a href="#93-polarization-antenna">9.3 Polarization (Antenna)</a></li>
+<li><a href="#94-radiation-pattern-terms">9.4 Radiation Pattern Terms</a></li>
+<li><a href="#95-antenna-types-know-directionality-polarization-gain-use">9.5 Antenna Types (know directionality, polarization, gain, use)</a></li>
+</ul>
+</li>
+<li><a href="#10-software-defined-radios-sdr-112-bolcew11">10. Software Defined Radios (SDR) (112-BOLCEW11)</a><ul>
+<li><a href="#101-definition-concept">10.1 Definition &amp; Concept</a></li>
+<li><a href="#102-key-principles">10.2 Key Principles</a></li>
+<li><a href="#103-filtering-resampling">10.3 Filtering &amp; Resampling</a></li>
+<li><a href="#104-hackrf-one-know-specs">10.4 HackRF One (know specs)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#block-5-the-three-divisions-of-ew-ea-ep-es">BLOCK 5 — THE THREE DIVISIONS OF EW (EA / EP / ES)</a><ul>
+<li><a href="#11-electromagnetic-attack-ea-ea_es_ep-112-bolcew03">11. Electromagnetic Attack (EA) — (EA_ES_EP, 112-BOLCEW03)</a><ul>
+<li><a href="#111-definition">11.1 Definition</a></li>
+<li><a href="#112-offensive-vs-defensive-ea">11.2 Offensive vs. Defensive EA</a></li>
+<li><a href="#113-the-7-ea-actionsmissions">11.3 The 7 EA Actions/Missions</a></li>
+<li><a href="#114-jamming-high-yield">11.4 Jamming — HIGH-YIELD</a></li>
+<li><a href="#115-countermeasures-expendables">11.5 Countermeasures / Expendables</a></li>
+<li><a href="#116-ea-considerations">11.6 EA Considerations</a></li>
+</ul>
+</li>
+<li><a href="#12-electromagnetic-protection-ep-ea_es_ep">12. Electromagnetic Protection (EP) — (EA_ES_EP)</a><ul>
+<li><a href="#121-definition">12.1 Definition</a></li>
+<li><a href="#122-ep-tasks-memorize-the-6">12.2 EP Tasks (memorize the 6)</a></li>
+<li><a href="#123-ep-techniques-ttps">12.3 EP Techniques &amp; TTPs</a></li>
+<li><a href="#124-emi-reporting">12.4 EMI Reporting</a></li>
+<li><a href="#125-common-jamming-signals-recognition">12.5 Common Jamming Signals (recognition)</a></li>
+<li><a href="#126-ep-planning">12.6 EP Planning</a></li>
+</ul>
+</li>
+<li><a href="#13-electromagnetic-support-es-ea_es_ep">13. Electromagnetic Support (ES) — (EA_ES_EP)</a><ul>
+<li><a href="#131-definition">13.1 Definition</a></li>
+<li><a href="#132-es-vs-sigint-high-yield">13.2 ES vs. SIGINT (HIGH-YIELD)</a></li>
+<li><a href="#133-es-actions">13.3 ES Actions</a></li>
+<li><a href="#134-es-preparation">13.4 ES Preparation</a></li>
+<li><a href="#135-direction-finding-df-memorize">13.5 Direction Finding (DF) — MEMORIZE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#block-6-tactical-employment-of-the-ew-platoon">BLOCK 6 — TACTICAL EMPLOYMENT OF THE EW PLATOON</a><ul>
+<li><a href="#14-ew-threat-assessment-ipoe-cybolc_ew_threat_class">14. EW Threat Assessment / IPOE (CYBOLC_EW_Threat_Class)</a><ul>
+<li><a href="#141-ipoe-intelligence-preparation-of-the-operational-environment-4-steps">14.1 IPOE (Intelligence Preparation of the Operational Environment) — 4 Steps</a></li>
+<li><a href="#142-risk">14.2 Risk</a></li>
+<li><a href="#143-example-threat">14.3 Example Threat</a></li>
+</ul>
+</li>
+<li><a href="#15-ew-platoon-force-structure-mission-112-17abolc">15. EW Platoon Force Structure &amp; Mission (112-17ABOLC)</a><ul>
+<li><a href="#151-overview">15.1 Overview</a></li>
+<li><a href="#152-commandsupport-relationships">15.2 Command/Support Relationships</a></li>
+<li><a href="#153-key-personnel">15.3 Key Personnel</a></li>
+<li><a href="#154-the-so-what-of-ew-plts">15.4 The "So What" of EW PLTs</a></li>
+<li><a href="#155-ew-formations-by-echelon">15.5 EW Formations by Echelon</a></li>
+<li><a href="#156-ew-core-competencies-fundamental-principles-atp-3-124">15.6 EW Core Competencies &amp; Fundamental Principles (ATP 3-12.4)</a></li>
+</ul>
+</li>
+<li><a href="#16-ew-plt-movement-techniques-112-17abolc">16. EW PLT Movement Techniques (112-17ABOLC)</a><ul>
+<li><a href="#161-combat-power-mobility">16.1 Combat Power &amp; Mobility</a></li>
+<li><a href="#162-operations-methodology">16.2 Operations Methodology</a></li>
+<li><a href="#163-formations-movement">16.3 Formations &amp; Movement</a></li>
+<li><a href="#164-actions-on-contact-4-steps">16.4 Actions on Contact (4 steps)</a></li>
+</ul>
+</li>
+<li><a href="#17-ew-site-selection-112-17abolc">17. EW Site Selection (112-17ABOLC)</a><ul>
+<li><a href="#171-ew-site-requirements-memorize-the-5">17.1 EW Site Requirements (memorize the 5)</a></li>
+<li><a href="#172-requirements-vs-considerations">17.2 Requirements vs. Considerations</a></li>
+<li><a href="#173-key-inputs">17.3 Key Inputs</a></li>
+<li><a href="#174-ems-survey">17.4 EMS Survey</a></li>
+</ul>
+</li>
+<li><a href="#18-establishing-an-ew-hide-site-observation-post-112-17abolc">18. Establishing an EW Hide Site / Observation Post (112-17ABOLC)</a><ul>
+<li><a href="#181-observation-post-op">18.1 Observation Post (OP)</a></li>
+<li><a href="#182-camouflage-cover-concealment">18.2 Camouflage, Cover &amp; Concealment</a></li>
+</ul>
+</li>
+<li><a href="#19-fundamentals-of-em-reconnaissance-112-17abolc">19. Fundamentals of EM Reconnaissance (112-17ABOLC)</a><ul>
+<li><a href="#191-definitions">19.1 Definitions</a></li>
+<li><a href="#192-techniques-types-methods">19.2 Techniques, Types, Methods</a></li>
+<li><a href="#193-recon-vs-surveillance">19.3 Recon vs. Surveillance</a></li>
+<li><a href="#194-the-7-fundamentals-of-reconnaissance-memorize">19.4 The 7 Fundamentals of Reconnaissance (MEMORIZE)</a></li>
+<li><a href="#195-ems-reporting">19.5 EMS Reporting</a></li>
+</ul>
+</li>
+<li><a href="#20-ew-training-management-112-17abolc">20. EW Training Management (112-17ABOLC)</a><ul>
+<li><a href="#201-metl">20.1 METL</a></li>
+<li><a href="#202-training-strategies">20.2 Training Strategies</a></li>
+<li><a href="#203-8-step-training-model">20.3 8-Step Training Model</a></li>
+<li><a href="#204-troop-leading-procedures-tlps-8-steps">20.4 Troop Leading Procedures (TLPs) — 8 Steps</a></li>
+</ul>
+</li>
+<li><a href="#21-operating-in-a-contested-space-environment-ccoe">21. Operating in a Contested Space Environment (CCoE)</a><ul>
+<li><a href="#211-space-fundamentals">21.1 Space Fundamentals</a></li>
+<li><a href="#212-threats-indicators">21.2 Threats &amp; Indicators</a></li>
+<li><a href="#213-mitigation-takeaways">21.3 Mitigation &amp; Takeaways</a></li>
+</ul>
+</li>
+<li><a href="#22-case-study-2nd-nagorno-karabakh-war-2020-call-21-655">22. Case Study — 2nd Nagorno-Karabakh War 2020 (CALL 21-655)</a></li>
+</ul>
+</li>
+<li><a href="#quick-reference-tables">QUICK-REFERENCE TABLES</a><ul>
+<li><a href="#a-the-three-divisions-of-ew-at-a-glance">A. The Three Divisions of EW at a Glance</a></li>
+<li><a href="#b-direction-finding-sensors">B. Direction Finding Sensors</a></li>
+<li><a href="#c-must-memorize-formulas">C. Must-Memorize Formulas</a></li>
+<li><a href="#d-db-shortcuts">D. dB Shortcuts</a></li>
+<li><a href="#e-key-acronyms">E. Key Acronyms</a></li>
+</ul>
+</li>
+<li><a href="#self-test-question-bank">SELF-TEST QUESTION BANK</a></li>
+</ul>
+</div>
+</div>
+    </aside>
+    <main id="top">
+      <div class="hero">
+        <h1>Electromagnetic Warfare (EW) BOLC</h1>
+        <p>Comprehensive Exam Study Guide &middot; synthesized from all 22 course documents</p>
+        <span class="tag">UNCLASSIFIED &middot; 6 study blocks &middot; 52-question self-test</span>
+      </div>
+      
+<p><strong>Course:</strong> 17A/17-series Cyber &amp; Electromagnetic Warfare Basic Officer Leader Course (BOLC)
+<strong>Scope:</strong> All 22 source documents — EW history, EMS fundamentals, EW math (logarithms &amp; decibels), EM wave theory, radio-wave propagation, radio fundamentals, antenna theory, software-defined radios, EA/EP/ES doctrine, CEMA doctrine, threat assessment/IPOE, EW platoon force structure, movement, site selection, hide sites, reconnaissance, training management, contested-space operations, tactical radios, and historical case studies.
+<strong>Classification of source material:</strong> UNCLASSIFIED (one tactical-radio document is CUI). This guide is UNCLASSIFIED.</p>
+<hr />
+<h2 id="how-to-use-this-guide">How to Use This Guide</h2>
+<p>Sections are grouped into six study blocks: <strong>(1) History &amp; Doctrine</strong>, <strong>(2) EMS &amp; Wave Fundamentals</strong>, <strong>(3) EW Math</strong>, <strong>(4) Radio, Antenna &amp; SDR Systems</strong>, <strong>(5) EW Divisions (EA/EP/ES)</strong>, and <strong>(6) Tactical Employment of the EW Platoon</strong>. Each section lists must-know facts, key terms, and figures. A <strong>Quick-Reference Tables</strong> block and a <strong>Self-Test Question Bank</strong> with answers follow at the end. Bold items and tables are the highest-yield material for the exam.</p>
+<hr />
+<h1 id="block-1-ew-history-doctrine">BLOCK 1 — EW HISTORY &amp; DOCTRINE</h1>
+<h2 id="1-evolution-of-electronicelectromagnetic-warfare-112-bolcew01">1. Evolution of Electronic/Electromagnetic Warfare (112-BOLCEW01)</h2>
+<h3 id="11-pre-world-war-i-foundational-events">1.1 Pre-World War I (Foundational Events)</h3>
+<ul>
+<li><strong>1888 — Heinrich Hertz</strong> demonstrated that electric sparks propagate through space (seen as a scientific phenomenon, not communications).</li>
+<li><strong>1897 — Guglielmo Marconi</strong> invented the first radio; sent the first wireless communication over open sea (Bristol Channel → Flat Holm Island, ~3.7 miles). Patent approved, production began.</li>
+<li><strong>1901 — First deliberate radio jamming:</strong> America's Cup Yacht Race (Columbia vs. Shamrock II). Competing wireless telegraph companies hired by newspapers; one held a transmitter down over an hour to jam competitors.</li>
+<li><strong>1903 — Marconi/Maskelyne Affair:</strong> First <strong>Electronic Attack</strong>. Nevil Maskelyne ("Scientific Hooligan") injected a mocking Morse message into Marconi's "secure" Royal Institution demonstration.</li>
+<li><strong>1903 — Navy fleet exercise (Blue vs. White):</strong> USS Texas jamming attempt; officer delayed the jam to hear the whole message — one of the first recorded <strong>Intelligence Gain/Loss (IGL)</strong> conflicts.</li>
+<li><strong>1904 — Russo-Japanese War:</strong> First documented use of EW in <strong>combat</strong>. Russian operators used "Spark" transmitters to jam Japanese transmissions. Proof that <strong>any transmitter is a jammer.</strong> Russia commemorates 15 April as "Day of Radio Electronic Warfare."</li>
+<li><strong>1906 —</strong> Army Signal Corps' first wireless platoon (Cuba to Key West).</li>
+</ul>
+<h3 id="12-world-war-i-19141918">1.2 World War I (1914–1918)</h3>
+<ul>
+<li>British Cable Ship (CS) <strong>Alert</strong> cut German undersea telegraph cables → forced Germany onto radio → birth of <strong>Information Warfare</strong>.</li>
+<li>Birth of modern <strong>SIGINT</strong> — listening stations (e.g., Eiffel Tower); encryption became necessary. Army's Cipher Bureau <strong>MI-8</strong> established by <strong>Herbert Yardley</strong>.</li>
+<li><strong>1915 —</strong> UK Royal Navy develops <strong>Direction Finding (DF)</strong>.</li>
+<li><strong>Clapper-break</strong> on aircraft = first use of <strong>Electronic Counter-Countermeasures (ECCM/EP)</strong>.</li>
+</ul>
+<h3 id="13-interwar-world-war-ii">1.3 Interwar &amp; World War II</h3>
+<ul>
+<li><strong>RADAR = RAdio Detection And Ranging.</strong> 1935 — Robert Watson-Watt bounced a radio wave off an aircraft (~17 mi); 1936 range improved to 75 mi. UK "Chain Home" early-warning network.</li>
+<li><strong>1938 —</strong> first airborne jamming of radar (Germans).</li>
+<li><strong>1941 —</strong> US established the <strong>Radio Research Laboratory (RRL)</strong> (originally the Radar Counter-Measure Laboratory; renamed for secrecy). RRL developed virtually every US jammer/receiver/countermeasure of WWII.</li>
+<li><strong>Battle of the Beams (1940–41):</strong> Germany's "Knickebein" navigation beams for night bombing; Britain countered via airborne ELINT + jamming.</li>
+<li><strong>Ferret Flights (1943):</strong> bombers turned into ELINT aircraft to detect enemy radar.</li>
+<li><strong>Chaff / "Window" / "Rope":</strong> foil strips creating deceptive radar echoes. D-Day (<strong>Operations TAXABLE and GLIMMER</strong>, 5–6 Jun 1944) simulated a fake fleet toward Pas-de-Calais and blinded German radar during the Normandy landings.</li>
+<li>Army's limited ground jamming stemmed from <strong>Intelligence Gain/Loss</strong> — jamming would interfere with vital communications intelligence.</li>
+</ul>
+<h3 id="14-cold-war-korea-vietnam">1.4 Cold War, Korea, Vietnam</h3>
+<ul>
+<li><strong>1945 —</strong> Signal Security Agency became the <strong>Army Security Agency (ASA)</strong> under the Director of Military Intelligence.</li>
+<li><strong>1954 —</strong> 72nd and 73rd Communications EW Battalions formed at Fort Huachuca, AZ. 1955 Operation SAGEBRUSH — 73rd's jamming so effective they were asked to leave.</li>
+<li><strong>1955 —</strong> ASA assumed control of ELINT and communications ECM from the Signal Corps.</li>
+<li><strong>Vietnam (1961–1975):</strong> ASA entered May 1961. <strong>Spec-4 James Davis</strong> — sometimes called "First U.S. Serviceman Killed in Combat in Vietnam" (DF mission). <strong>SEAD = Suppression of Enemy Air Defense</strong> matured; F-100/F-105 "<strong>Wild Weasels</strong>" used against SA-2s and radar.</li>
+<li><strong>1982 — First Lebanon War / Operation Mole Cricket 19 (Bekaa Valley):</strong> first time a Western-equipped air force destroyed a Soviet-built SAM network (Israel vs. Syria), using ELINT and RPVs.</li>
+</ul>
+<h3 id="15-1990spresent">1.5 1990s–Present</h3>
+<ul>
+<li><strong>Desert Shield/Storm (1990–91):</strong> "<strong>Spoof and Punch</strong>" — ELINT mapped Iraqi IADS; drones/decoys/jammers suppressed; stealth destroyed C2 nodes. Air victory in 96 hrs; only 2 aircraft lost of ~900 flying 38,000 sorties. Ground EW (<strong>CEWI companies, TLQ-17A jammer</strong>) was underwhelming.</li>
+<li><strong>Post-9/11:</strong> OEF (Oct 2001), OIF (Mar 2003). <strong>RCIEDs</strong> became the single most effective weapon vs. US forces (&gt;7,700 casualties by May 2005). Response = <strong>CREW (Counter-RCIED Electronic Warfare)</strong> under new <strong>Functional Area (FA) 29</strong>.</li>
+<li><strong>FA 29 career field (2009):</strong> 29-series → FA 29 EW Officer, 290A EW Technician (WO), 29E EW Specialist (NCO).</li>
+<li><strong>EW → Cyber Branch:</strong> Jan 2014 transition announced; 2016 EW School became "EW College" under Cyber School; <strong>1 October 2018 — EW officially became part of Cyber Branch.</strong> New MOS: <strong>17B (Officer), 170B (Warrant/Technician), 17E (Specialist/NCO).</strong> Training consolidated at Fort Gordon (2020/2021).</li>
+<li><strong>EW Insignia</strong> approved 26 October 2011. <strong>Association of Old Crows (AOC):</strong> WWII ECM officers were "Ravens" → instructors became "Old Crows"; AOC founded 1964; journal became <em>Journal of Electronic Defense (JED)</em> in 1978.</li>
+<li><strong>Modern conflicts:</strong> 2014 Russia/Ukraine (CEMA + disinformation); <strong>2020 2nd Nagorno-Karabakh War</strong> (drones, loitering munitions, GNSS jamming); <strong>2022–present Russo-Ukraine War</strong> (small-UAS warfare, GNSS denial, EMS discipline).</li>
+<li><strong>Emerging tech:</strong> Directed-energy weapons, AI for spectrum management, <strong>C-UAS</strong>, JADC2, Mosaic Warfare, <strong>CHAMP</strong> (high-power microwave), <strong>LaWS</strong> (laser), EMP rifles.</li>
+</ul>
+<h3 id="16-overarching-historical-lesson-from-case-studies-monograph-maj-henke">1.6 Overarching Historical Lesson (from "Case Studies" monograph — MAJ Henke)</h3>
+<p>The US Army has repeatedly <strong>neglected EW between conflicts and rebuilt it under crisis.</strong> Three lessons:</p>
+<ol>
+<li>Offensive/defensive <strong>EA and ES work</strong> when resourced, trained, and integrated (Overlord, Vietnam ARDF, Desert Storm aviation).</li>
+<li><strong>EW capabilities atrophy</strong> between conflicts if not maintained.</li>
+<li>Failing to maintain EW risks <strong>unnecessary loss of personnel and equipment</strong> at the start of the next conflict — critical given the speed/lethality of future LSCO vs. Russia/China.</li>
+</ol>
+<hr />
+<h2 id="2-army-cema-ew-doctrine-new-army-cema-doctrine-112-bolcew03">2. Army CEMA &amp; EW Doctrine (NEW Army CEMA Doctrine — 112-BOLCEW03)</h2>
+<h3 id="21-core-definitions">2.1 Core Definitions</h3>
+<ul>
+<li><strong>CEMA (Cyberspace Electromagnetic Activities):</strong> actions leveraged to <strong>seize, retain, and exploit</strong> an advantage over adversaries in <strong>both cyberspace and the EMS</strong>, while denying/degrading enemy use of the same and protecting the mission command system.</li>
+<li><strong>CEMA is comprised of:</strong> Electromagnetic Warfare + Cyberspace Operations + Spectrum Management Operations.</li>
+<li><strong>Electromagnetic Warfare (EW):</strong> military action involving the use of electromagnetic and directed energy to <strong>control the EMS or to attack the enemy</strong> (FM 3-12). <strong>Purpose:</strong> deny the enemy control of the EMS while ensuring friendly freedom of maneuver within it.</li>
+<li><strong>EW's three divisions:</strong> <strong>Electromagnetic Attack (EA)</strong>, <strong>Electromagnetic Protection (EP)</strong>, <strong>Electromagnetic Support (ES).</strong></li>
+</ul>
+<h3 id="22-related-concepts">2.2 Related Concepts</h3>
+<ul>
+<li><strong>Spectrum Management Operations (SMO):</strong> spectrum management + frequency assignment + host-nation coordination + policy. SMO is the management portion of EMSO.</li>
+<li><strong>EMSO (Electromagnetic Spectrum Operations)</strong> = EW + SMO combined.</li>
+<li><strong>Warfighting Functions (WfF):</strong> Movement &amp; Maneuver, Intelligence, Fires, Sustainment, Protection, <strong>Mission Command (C2)</strong>. Integration/synchronization of CEMA is a task of the <strong>Mission Command</strong> WfF.</li>
+</ul>
+<h3 id="23-key-cemaew-publications">2.3 Key CEMA/EW Publications</h3>
+<table>
+<thead>
+<tr>
+<th>Publication</th>
+<th>Title / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FM 3-12</strong></td>
+<td>Cyberspace and Electromagnetic Warfare Operations — TTPs for coordinating/integrating/synchronizing Army CEMA</td>
+</tr>
+<tr>
+<td><strong>ATP 3-12.3</strong></td>
+<td>Electromagnetic Warfare Techniques — how to conduct EW in operations</td>
+</tr>
+<tr>
+<td><strong>ATP 3-12.4</strong></td>
+<td>Electromagnetic Warfare Platoon — planning/preparing/executing EW PLT ops</td>
+</tr>
+<tr>
+<td><strong>JP 3-13.1</strong></td>
+<td>(Joint) Electronic/Electromagnetic Warfare</td>
+</tr>
+<tr>
+<td><strong>ADP/ADRP 6-0</strong></td>
+<td>Mission Command</td>
+</tr>
+<tr>
+<td><strong>ADP/ADRP 3-0</strong></td>
+<td>Operations</td>
+</tr>
+<tr>
+<td><strong>TC 3-12.1.2.2 (CEWTS)</strong></td>
+<td>US Army Cyber &amp; EW Training Strategy</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-cema-force-structure-corps-and-below">2.4 CEMA Force Structure (Corps and Below)</h3>
+<ul>
+<li><strong>CEMA Cell</strong> (Bde–Corps): CEMA OIC (17B), EWO (17B), CWO (17A), EW Technician (170B), Enlisted EW Staff (17E), Spectrum Manager (25E).</li>
+<li><strong>BDE EW Platoon mission:</strong> conduct <strong>electromagnetic sensing and effects delivery</strong>; support the commander's <strong>PIRs</strong> and provide <strong>early warning</strong> to protect the force.</li>
+<li>Terms "CEMA" and "EW" are used interchangeably at Corps-and-below because almost all organic CEMA capability there is EW-related, and most CEMA personnel are EW (17E/170B/17B).</li>
+</ul>
+<hr />
+<h1 id="block-2-ems-electromagnetic-wave-fundamentals">BLOCK 2 — EMS &amp; ELECTROMAGNETIC WAVE FUNDAMENTALS</h1>
+<h2 id="3-introduction-to-the-electromagnetic-spectrum-112-bolcew02">3. Introduction to the Electromagnetic Spectrum (112-BOLCEW02)</h2>
+<h3 id="31-wave-characteristics">3.1 Wave Characteristics</h3>
+<ul>
+<li><strong>Frequency:</strong> number of complete cycles/oscillations passing a fixed point per second. Unit = <strong>Hertz (Hz)</strong>. Waves are generated by an <strong>alternating current</strong>.</li>
+<li><strong>Amplitude:</strong> height of a sine wave. <em>Peak</em> = reference line to peak/trough; <em>Peak-to-Peak</em> = max positive to max negative.</li>
+<li><strong>Cycle:</strong> one complete phase (0 to 2π). <strong>Peak/Crest</strong> = highest point; <strong>Trough</strong> = lowest point.</li>
+<li><strong>Wavelength (λ):</strong> distance between repeating points of a wave (usually meters). Symbol = lambda <strong>λ</strong>.</li>
+<li><strong>KEY RELATIONSHIP:</strong> Frequency and wavelength are <strong>inversely proportional</strong>: <strong>High Freq = Short λ; Low Freq = Long λ.</strong></li>
+</ul>
+<h3 id="32-the-ems-sorted-by-frequency-low-high">3.2 The EMS (sorted by frequency, low → high)</h3>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Frequency Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radio Waves (RF)</td>
+<td>3 Hz – 300 GHz (≈0–300 MHz "radio waves" portion)</td>
+</tr>
+<tr>
+<td>Microwaves</td>
+<td>300 MHz – 300 GHz</td>
+</tr>
+<tr>
+<td>Infrared (IR)</td>
+<td>300 GHz – 405 THz</td>
+</tr>
+<tr>
+<td>Visible Light</td>
+<td>405 THz (Red) – 790 THz (Violet)</td>
+</tr>
+<tr>
+<td>Ultraviolet (UV)</td>
+<td>790 THz – 30 PHz</td>
+</tr>
+<tr>
+<td>X-rays</td>
+<td>30 PHz – 30 EHz</td>
+</tr>
+<tr>
+<td>Gamma Rays</td>
+<td>&gt; 10 EHz</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-rf-sub-bands-where-we-operate-memorize-order">3.3 RF Sub-Bands ("Where We Operate" — memorize order)</h3>
+<p>From lowest to highest: <strong>ELF, SLF, ULF, VLF, LF, MF, HF, VHF, UHF, SHF, EHF.</strong> (UHF/SHF/EHF are microwaves.)</p>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Range</th>
+<th>λ</th>
+<th>Key Uses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ELF</strong> (Extremely Low)</td>
+<td>3–30 Hz</td>
+<td>10,000–100,000 km</td>
+<td>Submarine comms (one-way only)</td>
+</tr>
+<tr>
+<td><strong>SLF</strong> (Super Low)</td>
+<td>30–300 Hz</td>
+<td>1,000–10,000 km</td>
+<td>AC power grids (50/60 Hz); submarine comms</td>
+</tr>
+<tr>
+<td><strong>ULF</strong> (Ultra Low)</td>
+<td>300 Hz–3 kHz</td>
+<td>100–1,000 km</td>
+<td>Mine comms; penetrates earth</td>
+</tr>
+<tr>
+<td><strong>VLF</strong> (Very Low)</td>
+<td>3–30 kHz</td>
+<td>10–100 km</td>
+<td>Submarines (penetrates water 10–40 m); nav beacons</td>
+</tr>
+<tr>
+<td><strong>LF</strong> (Low)</td>
+<td>30–300 kHz</td>
+<td>1–10 km</td>
+<td>AM broadcast (Europe/Africa/Asia); aircraft beacon/nav</td>
+</tr>
+<tr>
+<td><strong>MF</strong> (Medium)</td>
+<td>300 kHz–3 MHz</td>
+<td>100–1,000 m</td>
+<td>Maritime distress (500 kHz); AM radio</td>
+</tr>
+<tr>
+<td><strong>HF</strong> (High)</td>
+<td>3–30 MHz</td>
+<td>10–100 m</td>
+<td>Medium/long-distance comms; skywave</td>
+</tr>
+<tr>
+<td><strong>VHF</strong> (Very High)</td>
+<td>30–300 MHz</td>
+<td>1–10 m</td>
+<td>FM radio/TV, aircraft; ideal short-distance <strong>LOS</strong>; tropospheric ducting</td>
+</tr>
+<tr>
+<td><strong>UHF</strong> (Ultra High)</td>
+<td>300 MHz–3 GHz</td>
+<td>1 dm–1 m</td>
+<td>TV, mobile phones, <strong>GPS</strong>, WLAN/WiFi</td>
+</tr>
+<tr>
+<td><strong>SHF</strong> (Super High)</td>
+<td>3–30 GHz</td>
+<td>1 cm–1 dm</td>
+<td>Radar, SATCOM up/downlink, microwave links</td>
+</tr>
+<tr>
+<td><strong>EHF</strong> (Extremely High)</td>
+<td>30–300 GHz</td>
+<td>1 mm–1 cm</td>
+<td>Prone to atmospheric attenuation; jam-resistant (beamforming/adaptive nulling)</td>
+</tr>
+</tbody>
+</table>
+<p>Above radio/microwaves: <strong>IR</strong> (near IR in remotes; far IR = thermal/radiant heat), <strong>Visible Light</strong>, <strong>UV</strong> (dangerous, cellular-size λ), <strong>X-rays</strong> (penetrate skin), <strong>Gamma Rays</strong> (nuclear/radioactive; CMEs &amp; space weather).</p>
+<hr />
+<h2 id="4-fundamentals-of-em-waves-bolcew06">4. Fundamentals of EM Waves (BOLCEW06)</h2>
+<h3 id="41-what-is-an-em-wave">4.1 What is an EM Wave?</h3>
+<p>A <strong>self-propagating energy wave</strong> comprised of an <strong>electric field and a magnetic field</strong> that moves at the <strong>speed of light.</strong></p>
+<p><strong>Fundamentals of an EM wave:</strong>
+- Moves at a fixed speed (speed of light).
+- Comprised of an electric AND magnetic field (perpendicular to each other and to direction of travel).
+- Has <strong>no mass</strong> (all energy, no matter).
+- Has a <strong>net zero charge.</strong>
+- <strong>Self-propagating</strong> — requires <strong>no medium</strong> (unlike normal/mechanical waves that need a medium such as water).
+- Acts as both a <strong>particle (photon)</strong> and a <strong>wave</strong>.</p>
+<h3 id="42-wave-formulas-must-memorize">4.2 Wave Formulas (MUST MEMORIZE)</h3>
+<ul>
+<li><strong>Speed of light (c) = 300,000,000 m/s = 3 × 10⁸ m/s.</strong></li>
+<li><strong>V = λF</strong> (Velocity = wavelength × frequency)</li>
+<li><strong>F = V/λ</strong> or <strong>F = c/λ</strong> (Frequency)</li>
+<li><strong>λ = V/F</strong> or <strong>λ = c/F</strong> (Wavelength)</li>
+<li><strong>F = 1/T</strong> (Frequency = inverse of the period, T)</li>
+<li>Worked example: EM wave with λ = 1 m → F = (3×10⁸)/1 = <strong>300 MHz</strong>. Conversion: 2000 kHz = 2 MHz.</li>
+</ul>
+<h3 id="43-fields">4.3 Fields</h3>
+<ul>
+<li><strong>Electric Field:</strong> energy field around charged particles (measured in <strong>volts</strong>); field lines run <strong>+ to −</strong>.</li>
+<li><strong>Magnetic Field:</strong> created by a <strong>changing/moving electric field</strong> (does not exist on its own); lines run <strong>North to South</strong>; cannot exist as a <strong>monopole</strong>.</li>
+<li><strong>Electromagnetic Force:</strong> produced by changing/interacting/moving electric &amp; magnetic fields; <strong>perpendicular to both</strong>.</li>
+<li><strong>Discovery timeline:</strong> Gilbert (1500s magnetism) → Franklin (1752 charge) → Coulomb (1785 electric force) → Oersted (1820 electricity↔magnetism) → Faraday (1830 induction) → <strong>Maxwell (1861 unified E&amp;M).</strong></li>
+</ul>
+<h3 id="44-polarization">4.4 Polarization</h3>
+<ul>
+<li>Determined by the <strong>orientation of the electric field.</strong></li>
+<li><strong>Vertically polarized:</strong> E-field lines at right angles to Earth's surface (need a vertical antenna).</li>
+<li><strong>Horizontally polarized:</strong> E-field lines parallel to Earth's surface.</li>
+<li><strong>Circular polarization</strong> combines both.</li>
+<li><strong>Right-Hand Rule:</strong> thumb = E field, forefinger = H (magnetic) field; your antenna is the electric component.</li>
+</ul>
+<h3 id="45-em-wave-interactions-memorize-the-4-core-free-space-loss-doppler">4.5 EM Wave Interactions (memorize the 4 core + Free Space Loss + Doppler)</h3>
+<ul>
+<li><strong>Reflection:</strong> bouncing off a surface (multipath, ground-reflected waves); phase shift occurs (~180°).</li>
+<li><strong>Refraction:</strong> bending as a wave enters a medium of different density (wave must enter at &lt;90°); enables beyond-LOS comms (tropo scatter, prism).</li>
+<li><strong>Diffraction:</strong> bending <strong>around</strong> an object (terrain masking; part of the RF wave changes direction from LOS).</li>
+<li><strong>Absorption:</strong> loss of energy as the wave passes through an object/medium (weather increases it; more significant at <strong>higher frequencies</strong>).</li>
+<li><strong>Free Space Loss:</strong> signal-strength loss over a LOS path through free space, due to <strong>wavefront spreading</strong> (like a flashlight) — energy decreases as distance increases.</li>
+<li><strong>Doppler Effect (EM):</strong> frequency change as Tx/Rx move relative to each other. Moving <strong>toward</strong> = higher freq = <strong>blue shift</strong>; moving <strong>away</strong> = lower freq = <strong>red shift.</strong> Used in radar, target detection, navigation, ES.</li>
+</ul>
+<hr />
+<h2 id="5-radio-wave-propagation-bolcew07">5. Radio Wave Propagation (BOLCEW07)</h2>
+<h3 id="51-free-space-vs-on-earth">5.1 Free Space vs. On Earth</h3>
+<ul>
+<li><strong>On Earth:</strong> obstacles (trees/hills/cities), weather, charged atmospheric layers, curvature reduces LOS (~<strong>6 miles</strong> near the surface), man-made &amp; natural interference.</li>
+</ul>
+<h3 id="52-transmission-paths">5.2 Transmission Paths</h3>
+<ul>
+<li><strong>Ground Waves</strong> — Surface, Direct, and Ground-Reflected waves; affected by terrain, Earth's electrical characteristics, diffraction along curvature.</li>
+<li><em>Direct wave:</em> LOS path; affected by curvature/terrain.</li>
+<li><em>Surface wave:</em> travels along Earth's surface; attenuated by induced voltage &amp; terrain conductivity; slightly longer than direct.</li>
+<li><em>Ground-reflected wave:</em> reflects off Earth; can help go over obstacles; shorter coverage; may cause unwanted reception.</li>
+<li><strong>Sky Wave (Ionospheric Wave):</strong> radiated upward, refracted back to Earth by the ionosphere — great distances.</li>
+<li><strong>Space Wave:</strong> radio waves that leave Earth.</li>
+</ul>
+<h3 id="53-atmosphere-layers">5.3 Atmosphere Layers</h3>
+<ul>
+<li><strong>Troposphere:</strong> where weather occurs; big effect on propagation.</li>
+<li><strong>Stratosphere:</strong> between tropo and iono; constant temp; little/no effect; calm.</li>
+<li><strong>Ionosphere:</strong> ionized by solar radiation; <strong>4 charged layers during the day, 2 at night</strong>; <strong>refracts radio waves back to Earth.</strong></li>
+</ul>
+<h3 id="54-wave-degradation-transmission-losses">5.4 Wave Degradation / Transmission Losses</h3>
+<ul>
+<li>Three degradation types: <strong>Weather, Transmission Loss, Electromagnetic Interference (EMI).</strong></li>
+<li>Transmission losses: <strong>Ground Reflection Loss</strong> + <strong>Free Space Loss</strong> (+ Absorption). Combined absorption + ground-reflection + free-space loss account for most energy loss in ionospheric propagation. <strong>Greatest loss of radio-wave energy is due to absorption.</strong></li>
+<li><strong>Weather:</strong> rain attenuates by scattering (worse at higher freq) &amp; absorbs; fog serious absorption <strong>&gt;2 GHz</strong>; rain is <strong>8× denser than snow</strong> (snow attenuates less); hail depends on stone size.</li>
+<li><strong>Ducting (Temperature Inversion):</strong> waves trapped between differing air temps — great distances, <strong>Over-The-Horizon (OTH).</strong></li>
+<li><strong>Tropospheric Scattering:</strong> enables VHF/UHF far beyond LOS; OTH reception up to <strong>~500 miles.</strong></li>
+</ul>
+<h3 id="55-emi">5.5 EMI</h3>
+<ul>
+<li><strong>EMI:</strong> interference producing annoying/impossible operating conditions; man-made (transmitters, motors, ignition, switches; worse near industrial areas, lower at night) or natural.</li>
+<li><strong>Controlling EMI:</strong> cut antennas to correct frequency, limit bandwidth, use filtering/shielding; physically separate Tx/Rx antennas; use directional antennas.</li>
+</ul>
+<hr />
+<h1 id="block-3-ew-math">BLOCK 3 — EW MATH</h1>
+<h2 id="6-logarithms-112-bolcew05">6. Logarithms (112-BOLCEW05)</h2>
+<h3 id="61-exponentiation-rules-base-10">6.1 Exponentiation Rules (base 10)</h3>
+<ul>
+<li>10ⁿ = 10 × 10 × … (n tens); <strong>10⁰ = 1</strong>; 10⁻ⁿ = 1/10ⁿ.</li>
+<li>10ᵐ × 10ⁿ = 10^(m+n); (10ᵐ)ⁿ = 10^(m·n); 10ᵐ/10ⁿ = 10^(m−n).</li>
+</ul>
+<h3 id="62-logarithms">6.2 Logarithms</h3>
+<ul>
+<li>A <strong>logarithm is the inverse of exponentiation.</strong> If bᴸ = x, then <strong>log_b x = L</strong> (b = base, L = exponent/logarithm, x = result).</li>
+<li>Examples: log₁₀ 1000 = 3; log₁₀ 10 = 1; log₁₀ 400 ≈ 2.60.</li>
+</ul>
+<h3 id="63-logarithmic-rules">6.3 Logarithmic Rules</h3>
+<ol>
+<li><strong>log(N · M) = log N + log M</strong> (product → sum)</li>
+<li><strong>log(Nᴹ) = M(log N)</strong> (power → multiply)</li>
+<li><strong>log(N/M) = log N − log M</strong> (quotient → difference)</li>
+</ol>
+<hr />
+<h2 id="7-decibels-112-bolcew05-high-yield">7. Decibels (112-BOLCEW05) — HIGH-YIELD</h2>
+<h3 id="71-power-ratio-decibel-definition">7.1 Power Ratio &amp; Decibel Definition</h3>
+<ul>
+<li><strong>Power ratio</strong> = P_out / P_in (relative difference between two power levels). Example: 4 W / 2 W = 2 (P_out twice as strong).</li>
+<li><strong>Decibel (dB):</strong> power ratio on a <strong>logarithmic scale</strong>: <strong>dB = 10 log₁₀(P_out / P_in).</strong> dB values always followed by the "dB" symbol; no symbol = numerical form.</li>
+</ul>
+<h3 id="72-the-3s-and-10s-rules-of-thumb-memorize">7.2 The "3s and 10s" Rules of Thumb (memorize)</h3>
+<ul>
+<li>Multiplying the numerical power ratio <strong>× 2 → add 3 dB</strong>; dividing <strong>÷ 2 → subtract 3 dB.</strong></li>
+<li>Multiplying <strong>× 10 → add 10 dB</strong>; dividing <strong>÷ 10 → subtract 10 dB.</strong></li>
+<li>Reference values: ratio 2 ↔ 3 dB; 4 ↔ 6 dB; 8 ↔ 9 dB; 5 ↔ 7 dB; 10 ↔ 10 dB.</li>
+<li><strong>Convert dB → ratio:</strong> ratio = 10^(N/10) (antilog). Ex: 46 dB ≈ 40,000; −13 dB ≈ 0.05.</li>
+</ul>
+<h3 id="73-power-levels-dbw-and-dbm">7.3 Power Levels — dBW and dBm</h3>
+<ul>
+<li><strong>dBW</strong> = power referenced to <strong>1 watt</strong>: <strong>P(dBW) = 10 log(P in watts).</strong></li>
+<li><strong>dBm</strong> = power referenced to <strong>1 milliwatt</strong>: <strong>P(dBm) = 10 log(P in mW).</strong></li>
+<li>Example: 500 mW = 10 log(500) ≈ <strong>26.99 dBm.</strong></li>
+<li><strong>Conversion rule (MEMORIZE): N dBW = N dBm − 30 dB</strong>, i.e., <strong>dBW = (dBm − 30)</strong>; dBm = dBW + 30.</li>
+</ul>
+<h3 id="74-rules-for-manipulation">7.4 Rules for Manipulation</h3>
+<ul>
+<li>Adding/subtracting non-suffixed <strong>dB</strong> to/from dBm (or dBW) keeps the reference (result stays dBm/dBW). Ex: 10 dBm − 3 dB = 7 dBm; 24 dBW + 6 dB = 30 dBW.</li>
+<li><strong>dBm − dBm = dB</strong>; <strong>dBW − dBW = dB.</strong> Ex: 15 dBm − 5 dBm = 10 dB.</li>
+<li>To subtract dBm from dBW (or vice versa) you must first convert references.</li>
+<li><strong>Do NOT add dBm or dBW to themselves or each other.</strong></li>
+</ul>
+<h3 id="75-gain-and-loss">7.5 Gain and Loss</h3>
+<ul>
+<li><strong>Gain (g)</strong> = P_out / P_in; in dB: <strong>g(dB) = 10 log(P_out/P_in).</strong> Ex: 1 W in → 100 W out → g = 100 → 20 dB. Gain of 350 ≈ 25.44 dB.</li>
+<li><strong>Loss (α)</strong> = P_in / P_out = 1/g; in dB, <strong>α(dB) = −g(dB)</strong> (loss is the inverse of gain). Ex: 10 W → 1 W = 10 dB loss.</li>
+<li><strong>Systems with multiple gains/losses:</strong> overall system gain = (g₁·g₂·g₃…)/(α₁·α₂…). In dB, <strong>add all gains, subtract all losses.</strong> Example: g₁=500, g₂=100, g₃=10, α₁=20, α₂=5 → ratio 5000 → ≈ 36.99 dB.</li>
+<li>Output example: P_in = 10 dBW, g_system = 23 dB → <strong>P_out = 33 dBW</strong> (P_out dBW = P_in dBW + g_system dB).</li>
+</ul>
+<hr />
+<h1 id="block-4-radio-antenna-sdr-systems">BLOCK 4 — RADIO, ANTENNA &amp; SDR SYSTEMS</h1>
+<h2 id="8-fundamentals-of-radio-communications-112-bolcew08">8. Fundamentals of Radio Communications (112-BOLCEW08)</h2>
+<h3 id="81-layers-components">8.1 Layers &amp; Components</h3>
+<ul>
+<li><strong>Key layers:</strong> Radio (Transmitter / Receiver / Transceiver) → Radio Link → Channel → Network.</li>
+<li><strong>Radio types:</strong> Transmitter (Tx only), Receiver (Rx only), <strong>Transceiver</strong> (both).</li>
+<li><strong>Basic components:</strong> power source, antenna, feed line, modulator/demodulator, wave generator (<strong>oscillator</strong>), <strong>mixer</strong>, user interface (mic).</li>
+<li><strong>Radio Link:</strong> a wireless circuit formed by ≥2 radios (Tx, Tx lines, Tx antenna, propagation path, Rx antenna, Rx).</li>
+<li><strong>Channel:</strong> bandwidth of frequency a link occupies. Key terms: <strong>Bandwidth</strong> (range a channel occupies), <strong>Carrier Frequency</strong> (center unmodulated freq), <strong>Modulation</strong> (how the carrier is changed), <strong>Channel Spacing</strong> (bandwidth between two channels).</li>
+<li><strong>Network:</strong> a collection of radios linked by ≥1 channels.</li>
+</ul>
+<h3 id="82-duplexing">8.2 Duplexing</h3>
+<ul>
+<li><strong>Simplex (Broadcast):</strong> one direction only (TV, commercial radio, mass messaging).</li>
+<li><strong>Half-Duplex (HDX):</strong> both directions but <strong>one at a time</strong> (same frequency).</li>
+<li><strong>Full-Duplex (FDX):</strong> both directions <strong>simultaneously</strong>; uses <strong>two different frequencies</strong> (phones, two-way radios).</li>
+</ul>
+<h3 id="83-modulation-mixing">8.3 Modulation &amp; Mixing</h3>
+<ul>
+<li><strong>Modulation:</strong> changing a constant-frequency carrier wave according to a changing input wave by mixing the two signals.</li>
+<li><strong>Heterodyne (mixing):</strong> combining a low-freq wave (audio/input) with a high-freq wave (carrier) to produce a higher-freq resultant. <strong>Reginald Fessenden</strong> demonstrated the first heterodyne receiver in 1901.</li>
+<li><strong>Carrier wave:</strong> unmodulated wave modified to carry information; its center frequency is the radio's carrier.</li>
+<li><strong>Analog info:</strong> continuous measurement. <strong>Digital info:</strong> sampled, quantized into discrete states (1,0).</li>
+<li><strong>Three major modulation types:</strong> <strong>AM</strong> (Amplitude Modulation — incl. DSB, SSB, ASK), <strong>FM</strong> (Frequency Modulation — incl. FSK), <strong>PM</strong> (Phase Modulation — incl. PSK).</li>
+</ul>
+<h3 id="84-selective-squelch">8.4 Selective Squelch</h3>
+<ul>
+<li><strong>Squelch:</strong> a circuit/noise gate that cuts off receiver output when no input (or below a threshold) is present.</li>
+<li><strong>Tone squelch / selective-calling techniques:</strong> <strong>CTCSS</strong> (most common — superimposes ~50 sub-audible tones, 67–257 Hz), <strong>SELCALL</strong>, <strong>DCS</strong>, <strong>XTCSS</strong>, <strong>DTMF</strong> (Dual-Tone Multi-Frequency, 4×4 keypad matrix; used for selective calling and PTT unit ID).</li>
+</ul>
+<h3 id="85-comsec-frequency-hopping">8.5 COMSEC &amp; Frequency Hopping</h3>
+<ul>
+<li><strong>COMSEC:</strong> encrypting radio comms so signals can only be demodulated with a shared key/cipher. All military radios should use it. No technique is 100% effective.</li>
+<li><strong>Frequency Hopping (Frequency Agile):</strong> continuously moving through predesignated frequencies during transmission; requires shared protocol/precise timing (COMSEC). Reduces interference, hardens against jamming, lowers probability of intercept, harder to geolocate via DF. <strong>Combination of frequency hopping + COMSEC = multiple layers of security.</strong></li>
+</ul>
+<h3 id="86-cots-radio-services">8.6 COTS Radio Services</h3>
+<ul>
+<li><strong>FRS</strong> (Family Radio Service): short-range, no license needed.</li>
+<li><strong>GMRS</strong> (General Mobile Radio Service): land-mobile UHF short-distance.</li>
+<li><strong>PMR</strong> (Professional Mobile Radio): single-organization networks (police/fire); VHF/UHF; ~2.0 W, up to 25 mi; 22 channels × 121 privacy codes = 2,622 combos; point-to-multipoint.</li>
+</ul>
+<h3 id="87-common-military-radios-know-band-echelon">8.7 Common Military Radios (know band + echelon)</h3>
+<table>
+<thead>
+<tr>
+<th>Radio</th>
+<th>Type / Band</th>
+<th>Primary Use</th>
+<th>Lowest Echelon</th>
+<th>Mod / Power</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AN/PRC-150</strong></td>
+<td>HF, 3–30 MHz</td>
+<td>Beyond-LOS voice/data</td>
+<td>Company</td>
+<td>AM, ASK / 20 W</td>
+</tr>
+<tr>
+<td><strong>AN/PRC-1523E</strong></td>
+<td>FM/ASIP, 30–88 MHz</td>
+<td>LOS voice/data</td>
+<td>Platoon</td>
+<td>FM, FSK / 50 W</td>
+</tr>
+<tr>
+<td><strong>AN/PRC-117G</strong></td>
+<td>TACSAT, ~200–300 MHz</td>
+<td>LOS voice/data</td>
+<td>Company</td>
+<td>FM, FSK / 10 W (UHF)</td>
+</tr>
+<tr>
+<td><strong>JBCP/BFT</strong></td>
+<td>~1600 MHz</td>
+<td>Battle tracking/sync</td>
+<td>Lt Co / Mounted Plt</td>
+<td>FSK / 8 W</td>
+</tr>
+<tr>
+<td><strong>TRILOS</strong></td>
+<td>UHF band</td>
+<td>LOS tactical internet</td>
+<td>Battalion</td>
+<td>FSK, PSK</td>
+</tr>
+<tr>
+<td><strong>STT (Satellite Transport Terminal)</strong></td>
+<td>SHF band</td>
+<td>BLOS tactical internet transport</td>
+<td>Battalion</td>
+<td>PSK</td>
+</tr>
+</tbody>
+</table>
+<h3 id="88-common-sdrs-intro">8.8 Common SDRs (intro)</h3>
+<ul>
+<li><strong>RTL-SDR:</strong> 500 kHz–1.75 GHz; computer-based scanner (police/EMS/aircraft/GPS).</li>
+<li><strong>HackRF One:</strong> 1 MHz–6 GHz; testing/monitoring; half-duplex.</li>
+<li><strong>KrakenSDR:</strong> 24 MHz–1.766 GHz; direction finding &amp; beamforming.</li>
+</ul>
+<hr />
+<h2 id="9-antenna-theory-112-bolcew09">9. Antenna Theory (112-BOLCEW09)</h2>
+<h3 id="91-fundamentals">9.1 Fundamentals</h3>
+<ul>
+<li><strong>Antenna:</strong> the interface between EM waves propagating through space and electric currents in system components. Tx supplies amplified current → antenna radiates EM energy; Rx intercepts EM waves → produces current.</li>
+<li><strong>Induction (key concept):</strong> a current in a wire produces a magnetic field; a changing magnetic field creates a force that moves electrons (current).</li>
+<li><strong>Induction Field (near field):</strong> localized; does <strong>NOT</strong> transmit EM energy; responsible for resonation effects reflected back to the generator.</li>
+<li><strong>Radiation Field (far field):</strong> <strong>responsible for radiation/transmission</strong>; determines coverage pattern &amp; directional strength; decreases as distance from antenna increases.</li>
+</ul>
+<h3 id="92-key-electrical-concepts">9.2 Key Electrical Concepts</h3>
+<ul>
+<li><strong>Impedance (Z):</strong> total opposition to AC in a conductor (resistance + magnetic-induction effects). <strong>Z = E/I</strong> (voltage/current). Critical to antenna design; incorrect impedance = low performance or damage.</li>
+<li><strong>Resonance:</strong> an antenna's enhanced ability to efficiently emit/receive at certain frequencies. Occurs when the antenna is <strong>½ the wavelength</strong> of the target frequency (also at other multiples: ¼, ⅛, etc.). Smaller freq → larger antenna (HF); larger freq → smaller antenna (cell phone). <strong>Resonant length L = C / (2f)</strong> (C = 3×10⁸ m/s, f = target freq in MHz).</li>
+<li><strong>Standing Wave Ratio (SWR):</strong> ratio of outgoing energy vs. energy reflected back; high SWR damages/degrades performance. Related to impedance, resonance, and power output. <strong>Match antenna to radio and frequency; don't exceed antenna power rating.</strong></li>
+</ul>
+<h3 id="93-polarization-antenna">9.3 Polarization (Antenna)</h3>
+<ul>
+<li>Antennas are polarized based on the emitted electric field: <strong>Linear</strong> (vertical/horizontal), <strong>Circular</strong> (left/right hand), <strong>Elliptical</strong>.</li>
+<li><strong>Reciprocity:</strong> antennas must match polarization for max coupling. Vertical vs. horizontal = <strong>cross-polarization → 30 dB loss (catastrophic).</strong> Circular waveform into a linear antenna = <strong>3 dB loss.</strong></li>
+</ul>
+<h3 id="94-radiation-pattern-terms">9.4 Radiation Pattern Terms</h3>
+<ul>
+<li><strong>Main Lobe:</strong> direction of maximum radiation. <strong>Nulls:</strong> directions of no radiation (0 dB). <strong>First Null Beam Width (HPBW):</strong> angle between first nulls. <strong>Side Lobes:</strong> lobes outside the main lobe. <strong>Front/Back (F/B) Ratio:</strong> main-beam signal vs. back signal.</li>
+<li><strong>Directionality/Gain:</strong> bias to radiate in a specific direction; measured in <strong>dBi (decibels isotropic)</strong>; relative gain; used for DF and defeating interference.</li>
+<li><strong>Azimuth:</strong> angle in the horizontal plane. <strong>Elevation:</strong> angle above horizontal.</li>
+</ul>
+<h3 id="95-antenna-types-know-directionality-polarization-gain-use">9.5 Antenna Types (know directionality, polarization, gain, use)</h3>
+<table>
+<thead>
+<tr>
+<th>Antenna</th>
+<th>Directionality</th>
+<th>Gain (typical)</th>
+<th>Applications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Isotropic</strong></td>
+<td>Truly omni (theoretical, no nulls)</td>
+<td>0 dBi</td>
+<td>Benchmark for gain comparison</td>
+</tr>
+<tr>
+<td><strong>Half-Wave Dipole</strong></td>
+<td>Omni</td>
+<td>~2 dBi</td>
+<td>WLAN, VHF TV "rabbit ears", FM</td>
+</tr>
+<tr>
+<td><strong>Monopole (Whip)</strong></td>
+<td>Omni</td>
+<td>~2 dBi</td>
+<td>Military radios (most common), PTT</td>
+</tr>
+<tr>
+<td><strong>Log Periodic (LPA)</strong></td>
+<td>Directional (mod–high)</td>
+<td>5–10 dBi</td>
+<td>Spectrum analyzers, interference hunting, TV</td>
+</tr>
+<tr>
+<td><strong>Yagi</strong></td>
+<td>Directional (mod–high)</td>
+<td>5–10 dBi</td>
+<td><strong>Direction Finding</strong>, extended LOS, SCADA</td>
+</tr>
+<tr>
+<td><strong>Conical Spiral</strong></td>
+<td>Directional (circular pol.)</td>
+<td>8+ dBi</td>
+<td>Point-to-point, microwave links</td>
+</tr>
+<tr>
+<td><strong>Parabolic Dish</strong></td>
+<td>Extremely directional</td>
+<td>10+ dBi (up to 45 dBi large)</td>
+<td>SATCOM, point-to-point backhaul</td>
+</tr>
+<tr>
+<td><strong>Phased Array (Fan Beam)</strong></td>
+<td>Electronically steerable</td>
+<td>—</td>
+<td>Military radar (beam steered via phase shifters)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Gain levels: <strong>High &gt;20 dBi</strong> (parabolic dish); <strong>Medium 10–20 dBi</strong> (horn, helix, Yagi); <strong>Low &lt;10 dBi</strong> (dipole, loop, patch, slot, whip).</li>
+</ul>
+<hr />
+<h2 id="10-software-defined-radios-sdr-112-bolcew11">10. Software Defined Radios (SDR) (112-BOLCEW11)</h2>
+<h3 id="101-definition-concept">10.1 Definition &amp; Concept</h3>
+<ul>
+<li><strong>SDR:</strong> a radio where components normally built into hardware (<strong>mixers, filters, amplifiers, modulators/demodulators</strong>) are implemented via <strong>software</strong> on a PC or embedded system. Advantages: <strong>flexibility</strong> and <strong>ease of adaptation.</strong></li>
+<li>Ideal receiver: antenna → ADC → DSP → software application. Ideal transmitter: DSP generates numbers → DAC → antenna.</li>
+<li><strong>History:</strong> "digital receiver" coined 1970 (DoD "Gold Room," tool called <strong>Midas</strong>); "software radio" coined 1984 (E-Systems, now Raytheon). <strong>Project SpeakEasy</strong> (Air Force, Phase 1, 1990–1995) aimed to operate 2 MHz–2 GHz; <strong>Stephen Blust</strong> (1995).</li>
+</ul>
+<h3 id="102-key-principles">10.2 Key Principles</h3>
+<ul>
+<li><strong>Nyquist Theorem:</strong> to reproduce a signal, sample at a rate ≥ <strong>2× the highest frequency (2f_max).</strong> Undersampling → <strong>aliasing</strong> (false frequency components/distortion). Oversampling = much greater than 2×; wastes storage.</li>
+<li><strong>IQ Data:</strong> complex samples with a real (<strong>I, in-phase</strong>) and imaginary (<strong>Q, quadrature</strong>) component; IQ sampling <strong>doubles sampling bandwidth</strong>; does not "break" Nyquist.</li>
+<li><strong>RF Mixing:</strong> a frequency mixer creates new frequencies (sum and difference of two input signals).</li>
+</ul>
+<h3 id="103-filtering-resampling">10.3 Filtering &amp; Resampling</h3>
+<ul>
+<li><strong>Analog filters:</strong> Low-pass (blocks above cutoff), High-pass (blocks below cutoff).</li>
+<li><strong>Digital filters:</strong> FIR (Finite Impulse Response) &amp; IIR (Infinite Impulse Response — fewer terms/calculations).</li>
+<li><strong>RF filter types (4):</strong> Low-pass, High-pass, Band-pass, Band-reject.</li>
+<li><strong>Resampling:</strong> <strong>Decimation</strong> (reduce sampling rate) and <strong>Interpolation</strong> (increase sampling rate).</li>
+<li><strong>Demodulation:</strong> extracting the original info from the carrier. AM = envelope detection; FM = quadrature demodulation; PM = separating I &amp; Q.</li>
+</ul>
+<h3 id="104-hackrf-one-know-specs">10.4 HackRF One (know specs)</h3>
+<ul>
+<li>Frequency: <strong>1 MHz – 6 GHz</strong>; ADC resolution: <strong>8 bits</strong>; max bandwidth: <strong>20 MHz</strong>; <strong>half-duplex</strong> (TX and RX, not simultaneous); sample rates 2–20 Msps (quadrature); <strong>open source</strong>, portable.</li>
+<li><strong>JTRS</strong> (Joint Tactical Radio System) — US military SDR program using an open <strong>Software Communications Architecture (SCA).</strong></li>
+</ul>
+<hr />
+<h1 id="block-5-the-three-divisions-of-ew-ea-ep-es">BLOCK 5 — THE THREE DIVISIONS OF EW (EA / EP / ES)</h1>
+<h2 id="11-electromagnetic-attack-ea-ea_es_ep-112-bolcew03">11. Electromagnetic Attack (EA) — (EA_ES_EP, 112-BOLCEW03)</h2>
+<h3 id="111-definition">11.1 Definition</h3>
+<ul>
+<li><strong>EA:</strong> use of EM energy, directed energy, or <strong>anti-radiation weapons</strong> to attack personnel, facilities, or equipment with intent to <strong>degrade, neutralize, or destroy</strong> enemy combat capability; considered a <strong>form of fires</strong> (JP 3-13.1).</li>
+<li><strong>D4M:</strong> EA denies, degrades, disrupts, destroys, or <strong>manipulates</strong> enemy combat capability.</li>
+</ul>
+<h3 id="112-offensive-vs-defensive-ea">11.2 Offensive vs. Defensive EA</h3>
+<ul>
+<li><strong>Offensive EA:</strong> attacks an enemy capability to affect enemy personnel/equipment (jamming C2, anti-radiation missiles for SEAD, directed-energy).</li>
+<li><strong>Defensive EA:</strong> attacks an enemy capability to <strong>protect friendly</strong> forces (flares/chaff/active decoys, towed decoys, DE-IR countermeasures, <strong>Counter-RCIED</strong>). <em>(Note: EP ≠ Defensive EA — see §12.)</em></li>
+</ul>
+<h3 id="113-the-7-ea-actionsmissions">11.3 The 7 EA Actions/Missions</h3>
+<ol>
+<li><strong>Countermeasures</strong> (active/passive; EO-IR &amp; RF)</li>
+<li><strong>Electromagnetic Deception</strong> — 3 types: <strong>Simulative</strong> (represent friendly notional/actual capabilities), <strong>Manipulative</strong> (convey misleading indicators), <strong>Imitative</strong> (mimic threat emissions)</li>
+<li><strong>Electromagnetic Intrusion</strong> (insert EM energy into transmission paths to deceive/confuse operators)</li>
+<li><strong>Electromagnetic Jamming</strong></li>
+<li><strong>Electromagnetic Probing</strong> (intentional radiation to learn enemy system functions/capabilities)</li>
+<li><strong>Electromagnetic Pulse (EMP)</strong> (strong pulse inducing damaging current/voltage surges)</li>
+<li><em>(Countermeasures + the above comprise the EA action set)</em></li>
+</ol>
+<h3 id="114-jamming-high-yield">11.4 Jamming — HIGH-YIELD</h3>
+<ul>
+<li><strong>Fundamental principle:</strong> raise the noise level at a receiver so it exceeds the incoming signal. <strong>Jamming affects RECEIVERS, not transmitters.</strong> A jammed unit can still transmit but may not receive.</li>
+<li><strong>Signal-to-Noise Ratio (S/N):</strong> for a receiver to detect a signal, S/N must be <strong>&gt; 1</strong>. If S/N &lt; 1 → signal not detected (jammed).</li>
+</ul>
+<p><strong>Jamming techniques by employment:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Standoff jamming (SOJ)</strong></td>
+<td>Supports ops by disrupting/degrading threat C2 and sensors from a distance</td>
+</tr>
+<tr>
+<td><strong>Escort jamming</strong></td>
+<td>Defensive; protects maneuver forces from RF-triggered weapons</td>
+</tr>
+<tr>
+<td><strong>Spot jamming</strong></td>
+<td>Jams one specific frequency (max power on target; ineffective vs. freq-hopping)</td>
+</tr>
+<tr>
+<td><strong>Sweep jamming</strong></td>
+<td>Covers a frequency range by sweeping; good vs. frequency-agile targets</td>
+</tr>
+<tr>
+<td><strong>Barrage jamming</strong></td>
+<td>Covers a large bandwidth at once; disperses power (power-hungry); good for many targets, bad for stealth</td>
+</tr>
+<tr>
+<td><strong>Follower jamming</strong></td>
+<td>Automatically targets receivers when a threat transmission is detected</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Radar jamming:</strong> <strong>Noise jamming</strong> (RF on victim's frequency to interfere with receiver gain) vs. <strong>Deception jamming</strong> (deceive radar discriminators/operator). Employment: <strong>Support jamming</strong> (SOJ/escort) and <strong>Self-protection jamming.</strong></li>
+</ul>
+<h3 id="115-countermeasures-expendables">11.5 Countermeasures / Expendables</h3>
+<ul>
+<li><strong>Chaff:</strong> dispensed metallic strips that reflect EM waves; most widely used expendable EA; optimum length ≈ <strong>½ wavelength</strong> of the victim radar frequency; first used WWII (RAF "WINDOW," Jul 1943). Uses: area saturation, chaff corridor.</li>
+<li><strong>Decoys:</strong> replicate an electronic signature; saturate radar, coerce enemy to expose forces, defeat tracking.</li>
+</ul>
+<h3 id="116-ea-considerations">11.6 EA Considerations</h3>
+<ul>
+<li>De-confliction with friendly comms &amp; EMS-dependent systems; may interrupt <strong>intelligence collection</strong> (CEMA controlling the EMS can take precedence over SIGINT collection); IRCs (MISO, MILDEC); non-hostile local EMS; hostile intelligence collection; <strong>persistency</strong> (jamming effects only last while the jammer emits &amp; is in range).</li>
+<li><strong>Planning tools:</strong> EWPMT, SPEED, GIANT.</li>
+</ul>
+<hr />
+<h2 id="12-electromagnetic-protection-ep-ea_es_ep">12. Electromagnetic Protection (EP) — (EA_ES_EP)</h2>
+<h3 id="121-definition">12.1 Definition</h3>
+<ul>
+<li><strong>EP:</strong> actions to protect personnel, facilities, and equipment from <strong>friendly, neutral, enemy interference, and naturally occurring phenomena.</strong></li>
+<li><strong>EP vs. Defensive EA:</strong> both protect friendly units in the EMS, but <strong>EP acts on friendly systems</strong>; <strong>Defensive EA acts against enemy systems.</strong></li>
+</ul>
+<h3 id="122-ep-tasks-memorize-the-6">12.2 EP Tasks (memorize the 6)</h3>
+<ol>
+<li><strong>Electromagnetic Hardening</strong> (blanking, filtering, attenuating, grounding, bonding, shielding)</li>
+<li><strong>Electromagnetic Masking</strong> (controlled friendly radiation to protect emissions from enemy ES/SIGINT)</li>
+<li><strong>Emission Control (EMCON)</strong> (selective/controlled use of emitters to optimize C2 while minimizing detection/interference)</li>
+<li><strong>Electromagnetic Spectrum Management</strong></li>
+<li><strong>Wartime Reserve Modes (WARM)</strong> (capabilities held in reserve, unused until wartime to preserve surprise)</li>
+<li><strong>Electromagnetic Compatibility (EMC)</strong> (systems operate in intended environment without unacceptable interference)</li>
+</ol>
+<h3 id="123-ep-techniques-ttps">12.3 EP Techniques &amp; TTPs</h3>
+<ul>
+<li>Limiting transmissions, <strong>Radio PACE plans</strong>, terrain masking, directional antennas, spectrum management, frequency hopping, shielding, EMS management.</li>
+<li><strong>"The most basic protection from enemy EW is radio discipline"</strong> — limiting transmissions, antenna masking, low power (Center for Army Lessons Learned).</li>
+<li><strong>Personal EP TTPs:</strong> <strong>Body Mass Shielding</strong> (place body between jammer and receiver; rotate ~90°, wait ~2 min); <strong>Terrain Masking</strong> (use hills/buildings; place receiver near feature; put small GPS receivers in a <strong>6–8 inch hole</strong> to block EMI while keeping sky view).</li>
+<li><strong>Defeating jamming / improving Signal-to-Jamming Ratio:</strong> increase transmitter power, adjust/relocate antenna, establish a <strong>retransmission (RETRANS) station</strong>, use an alternate route, <strong>change frequencies.</strong></li>
+</ul>
+<h3 id="124-emi-reporting">12.4 EMI Reporting</h3>
+<ul>
+<li><strong>EMI:</strong> any EM disturbance (intentional or unintentional) that degrades performance. Report via <strong>Joint Spectrum Interference Report (JSIR)</strong> through spectrum-manager channels — even if you can overcome it. Operators must be trained to identify jamming to report it.</li>
+</ul>
+<h3 id="125-common-jamming-signals-recognition">12.5 Common Jamming Signals (recognition)</h3>
+<ul>
+<li><strong>Random Noise</strong> (like background noise); <strong>Stepped Tones</strong> (bagpipes); <strong>Spark</strong> (short high-intensity, rapid — very effective); <strong>Gulls</strong> (quick rise/slow fall — seagull cry); <strong>Random Pulse</strong>; <strong>Wobbler</strong> (howling); <strong>Preamble Jamming</strong> (mimics secure-net sync preamble).</li>
+</ul>
+<h3 id="126-ep-planning">12.6 EP Planning</h3>
+<ul>
+<li>EP is as much <strong>culture/discipline</strong> as technical capability; a <strong>team effort</strong> (CEMA cell needs unit buy-in); <strong>the single most important task of BDE-and-below CEMA — and the hardest.</strong> Coordinate with <strong>S-6</strong> (network), <strong>S-2</strong> (threat), conduct EM vulnerability assessment, build/update <strong>PACE plan</strong>, incorporate jamming into all collective training.</li>
+</ul>
+<hr />
+<h2 id="13-electromagnetic-support-es-ea_es_ep">13. Electromagnetic Support (ES) — (EA_ES_EP)</h2>
+<h3 id="131-definition">13.1 Definition</h3>
+<ul>
+<li><strong>ES:</strong> actions tasked by / under direct control of an operational commander to <strong>search for, intercept, identify, and locate/localize</strong> sources of intentional &amp; unintentional radiated EM energy — for <strong>immediate</strong> threat recognition, targeting, cueing EA, self-protection/EP, and supporting IRCs.</li>
+</ul>
+<h3 id="132-es-vs-sigint-high-yield">13.2 ES vs. SIGINT (HIGH-YIELD)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ES</th>
+<th>SIGINT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Legal authority</td>
+<td><strong>Title 10</strong></td>
+<td><strong>Title 50</strong></td>
+</tr>
+<tr>
+<td>Purpose</td>
+<td>Directly support operations (targeting, PIRs)</td>
+<td>Build intelligence products</td>
+</tr>
+<tr>
+<td>Data flow</td>
+<td>Can pass info to SIGINT</td>
+<td>Can pass "sterilized" info to ES</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ES and SIGINT are often co-located and mutually supporting; integrating EW + SIGINT is a <strong>force multiplier</strong> (reduces duplication, enables more collection). Task and purpose determine which asset is used.</li>
+</ul>
+<h3 id="133-es-actions">13.3 ES Actions</h3>
+<ul>
+<li><strong>Electromagnetic Reconnaissance</strong> (detect/locate/identify/evaluate foreign EM radiations), <strong>Electromagnetic Intelligence</strong>, <strong>Electromagnetics Security.</strong></li>
+</ul>
+<h3 id="134-es-preparation">13.4 ES Preparation</h3>
+<ul>
+<li><strong>Electromagnetic Environment (EME) Survey</strong> — like a weather report for the CEWO; begins with the enemy <strong>Electronic Order of Battle (EOB).</strong></li>
+<li><strong>Enemy EOB:</strong> comprehensive document of enemy electronic systems + associated platforms/frequencies; created/obtained by the <strong>SIGINT TECH in the MICO</strong>; one of the single most important documents for the EW PLT LDR.</li>
+<li><strong>Site Selection:</strong> determine best location for ES based on terrain/elevation, enemy avenues of approach, signal coverage, comms support, concealment, logistics. Basic tools: <strong>map, EOB, RF simulation software/coverage maps, enemy &amp; friendly SITEMPs.</strong></li>
+</ul>
+<h3 id="135-direction-finding-df-memorize">13.5 Direction Finding (DF) — MEMORIZE</h3>
+<ul>
+<li><strong>DF:</strong> using RF equipment to locate signals of interest; provides <strong>Line of Bearings (LOBs).</strong></li>
+<li><strong>LOB:</strong> <strong>single</strong> DF sensor → approximate azimuth to the transmitter.</li>
+<li><strong>Cut:</strong> <strong>two</strong> DF sensors → general location where two LOBs intersect.</li>
+<li><strong>Fix:</strong> <strong>three or more</strong> DF sensors → location by triangulation.</li>
+<li><strong>Circular Error Probability (CEP):</strong> the precise transmitter location cannot be certain (triangular area of overlap).</li>
+<li><strong>Path errors:</strong> Scatter, Refraction, Reflection, Reradiating.</li>
+<li>Advanced DF methods: <strong>TDOA (Time Difference of Arrival)</strong>, <strong>CI (Correlated Interferometry).</strong></li>
+</ul>
+<hr />
+<h1 id="block-6-tactical-employment-of-the-ew-platoon">BLOCK 6 — TACTICAL EMPLOYMENT OF THE EW PLATOON</h1>
+<h2 id="14-ew-threat-assessment-ipoe-cybolc_ew_threat_class">14. EW Threat Assessment / IPOE (CYBOLC_EW_Threat_Class)</h2>
+<h3 id="141-ipoe-intelligence-preparation-of-the-operational-environment-4-steps">14.1 IPOE (Intelligence Preparation of the Operational Environment) — 4 Steps</h3>
+<ol>
+<li><strong>Define the battlefield environment.</strong></li>
+<li><strong>Describe the battlefield's effects.</strong></li>
+<li><strong>Evaluate the threat.</strong></li>
+<li><strong>Determine threat COAs.</strong></li>
+</ol>
+<ul>
+<li>Analyze three layers: <strong>Physical, Logical, Cyber-Persona</strong> across Area, Structure, Capabilities, Organizations, People, Events.</li>
+</ul>
+<h3 id="142-risk">14.2 Risk</h3>
+<ul>
+<li><strong>Risk to Mission:</strong> impacts the unit's ability to achieve objectives.</li>
+<li><strong>Risk to Force:</strong> impacts personnel, equipment, sustainment.</li>
+<li><strong>Running Estimate:</strong> current status snapshot updated at the end of every MDMP step; contains Facts, Assumptions, Specified/Implied tasks, Limitations/Constraints, RFIs. Answers: what the CDR needs to know from CEMA, what risks to mitigate, what info to track.</li>
+</ul>
+<h3 id="143-example-threat">14.3 Example Threat</h3>
+<ul>
+<li><strong>Aviaconversia EA system</strong> — man/vehicle-portable Russian UHF jammer; jams 230 MHz &amp; 433 MHz; <strong>4 W</strong>; range <strong>150–200 km</strong>; likely 3 (one per recon company).</li>
+</ul>
+<hr />
+<h2 id="15-ew-platoon-force-structure-mission-112-17abolc">15. EW Platoon Force Structure &amp; Mission (112-17ABOLC)</h2>
+<h3 id="151-overview">15.1 Overview</h3>
+<ul>
+<li><strong>EW PLT:</strong> a <strong>14–40 personnel</strong> element of <strong>MOS 17-series</strong> soldiers, mounted or dismounted, supporting the unit's ability to <strong>target (lethal/nonlethal), improve EMS situational awareness, and conduct ISR.</strong></li>
+<li><strong>Mission:</strong> conduct <strong>ES and EA</strong> in close contact with enemy/civilian populations to enable maneuver commanders to seize, retain, and exploit the initiative.</li>
+<li><strong>Location:</strong> in <strong>HHC BDE</strong> (ABCT/SBCT) or the <strong>Multi-Functional Reconnaissance Company (MFRC)</strong> (MBCT). Falls under Brigade HQ, reporting to the BCT Commander.</li>
+</ul>
+<h3 id="152-commandsupport-relationships">15.2 Command/Support Relationships</h3>
+<ul>
+<li><strong>Organic</strong> to HHC BDE / MFRC. <strong>ADCON/garrison</strong> — Brigade HQ. <strong>OPCON</strong> — Brigade S-3 (or designated OPCON unit). <strong>Technical control</strong> — Brigade <strong>CEMA cell</strong>. Supports/coordinates with S-2 and Fires.</li>
+</ul>
+<h3 id="153-key-personnel">15.3 Key Personnel</h3>
+<ul>
+<li><strong>Platoon Leader (17B):</strong> responsible for all the platoon does/fails to do — training, employment, personnel, logistics. <strong>Platoon Sergeant:</strong> second-in-charge, senior enlisted. <strong>Team Chief:</strong> mission accomplishment, training, maintenance, tactical employment, calling/adjusting indirect fires. <strong>Team Members:</strong> proficiency in MOS tasks; detect/classify/report threat emissions.</li>
+</ul>
+<h3 id="154-the-so-what-of-ew-plts">15.4 The "So What" of EW PLTs</h3>
+<ul>
+<li><strong>Can do:</strong> sense signals, geolocate signals, conduct EMS baseline, conduct localized EA (jamming), provide SA in the close area.</li>
+<li><strong>Can't do:</strong> break radio encryption*, sense/jam an entire BDE AO, sense at infinite distance.</li>
+<li><strong>Should do:</strong> be placed <strong>near or beyond the FLOT</strong>, operate with recon elements, provide actionable data (NAI/PIR), <strong>tip and cue</strong> other sensors.</li>
+<li><strong>Shouldn't do:</strong> be the primary collection system, get an entire AO, jam outside emergency/decisive situations, be placed at the rear/near CPs, target radars, be a long-term collection asset.</li>
+<li><strong>Needs to succeed:</strong> be semi-autonomous, provide own local security, have a validated <strong>PACE plan (incl. BLOS data)</strong>, move/establish sites tactically, understand targeting/recon.</li>
+<li><strong>Needs from the unit:</strong> extended logistics, area security, an assigned NAI/local AO, refined PIRs, target attack guidance matrix, EOB with specific SOIs, clear CDR's intent.</li>
+</ul>
+<h3 id="155-ew-formations-by-echelon">15.5 EW Formations by Echelon</h3>
+<ul>
+<li><strong>Division EW Company</strong> (organic to DIV I&amp;EW BN) — close-area support; includes a <strong>Defensive EA PLT</strong> (protects vs. artillery fuses, RCIEDs, spectrum-homing rockets/missiles, observation &amp; EO devices).</li>
+<li><strong>Corps EW Company</strong> (organic to Corps MI BDE) — long-range sensors, <strong>deep fight</strong>; includes an <strong>Operations PLT</strong> (planning/management).</li>
+<li><strong>SOF EW PLTs</strong> — each SF group has an organic EW PLT; teams deploy independently.</li>
+<li><strong>MDTF EW PLT</strong> — extended-range sensing/effects; two EW sections + aerial multi-functional EW section; LOS/BLOS EA.</li>
+</ul>
+<h3 id="156-ew-core-competencies-fundamental-principles-atp-3-124">15.6 EW Core Competencies &amp; Fundamental Principles (ATP 3-12.4)</h3>
+<ul>
+<li><strong>Core Competencies:</strong> (1) <strong>Drive understanding</strong>, (2) <strong>Protect friendly personnel &amp; capabilities</strong>, (3) <strong>Deliver effects.</strong></li>
+<li><strong>Fundamental Principles:</strong> <strong>Operational focus</strong>, <strong>Adaptability &amp; versatility</strong>, <strong>Global reach.</strong></li>
+<li><strong>Nesting:</strong> Execute Missions (EA/ES/EP) → Exercise Fundamental Principles → Focus on Core Competencies → Achieve desired End State (controlled use of the EMS).</li>
+</ul>
+<hr />
+<h2 id="16-ew-plt-movement-techniques-112-17abolc">16. EW PLT Movement Techniques (112-17ABOLC)</h2>
+<h3 id="161-combat-power-mobility">16.1 Combat Power &amp; Mobility</h3>
+<ul>
+<li><strong>EW PLT is NOT designed to close with and destroy the enemy</strong> — it prioritizes <strong>security and stealth</strong>, avoiding/engaging the enemy only when necessary.</li>
+<li>Doctrine: <strong>3:1 advantage</strong> generally required to maneuver against and destroy an enemy force.</li>
+<li>MFRC EW PLT can maneuver against ~a <strong>10-man</strong> enemy unit; an EW <strong>Team</strong> vs. a 1–2 man unit. Rifle PLT can take a 12-man unit.</li>
+<li><strong>M249</strong> provides more suppression than M4 but limited ability vs. enemy in cover; largest EW PLT vehicle caliber is <strong>5.56 mm</strong> (only 3 of 4 vehicles have mountable weapons).</li>
+<li><strong>M2A3 Bradley (BFV):</strong> 3 crew + 6 dismounts; 25mm M242 Bushmaster, 7.62mm M240C, 2× TOW; 500-hp engine, 34–37 mph.</li>
+</ul>
+<h3 id="162-operations-methodology">16.2 Operations Methodology</h3>
+<ul>
+<li><strong>Centralized:</strong> PLT operates as a whole under the EW PL.</li>
+<li><strong>Decentralized:</strong> PLT parceled out in team/squad elements as <strong>TACON</strong> to maneuver elements (PL retains ADCON/OPCON).</li>
+<li><strong>Base dismounted element = the EW team</strong> (train it most).</li>
+</ul>
+<h3 id="163-formations-movement">16.3 Formations &amp; Movement</h3>
+<ul>
+<li><strong>Echelons:</strong> PLT (14–30, LT), Squad (9, SSG), Team (4, SGT).</li>
+<li><strong>3 most common formations:</strong> <strong>Column/File</strong> (speed + control, less firepower), <strong>Line</strong> (firepower forward, less speed), <strong>Wedge</strong> (360° security/flexibility, default for movement).</li>
+<li><strong>Mounted:</strong> Staggered Column (speed/limited lateral dispersion), Line (assault/open areas — poor for DF-on-the-move), Wedge (open terrain, vague enemy situation).</li>
+<li><strong>Movement techniques (3):</strong> <strong>Traveling</strong> (speed, contact unlikely), <strong>Traveling Overwatch</strong> (contact possible), <strong>Bounding Overwatch</strong> (contact expected).</li>
+</ul>
+<h3 id="164-actions-on-contact-4-steps">16.4 Actions on Contact (4 steps)</h3>
+<ol>
+<li><strong>React</strong> (battle drill; report to higher). 2. <strong>Develop the situation.</strong> 3. <strong>Choose an action</strong> (Attack, Bypass, Defend, Delay, Withdraw). 4. <strong>Execute and report.</strong> Maintain contact unless told to break contact.</li>
+</ol>
+<hr />
+<h2 id="17-ew-site-selection-112-17abolc">17. EW Site Selection (112-17ABOLC)</h2>
+<h3 id="171-ew-site-requirements-memorize-the-5">17.1 EW Site Requirements (memorize the 5)</h3>
+<ol>
+<li><strong>Line of Sight (LOS) to Objective</strong> — need EMS observation (detect/jam SOIs), not necessarily visual.</li>
+<li><strong>Accessible</strong> — can you and support assets reach it.</li>
+<li><strong>Tenable</strong> — can you sustain/support it and retain the ability to fall back/break contact. <em>(Never place a team where it can be easily isolated.)</em></li>
+<li><strong>Secure</strong> — ability to provide security (avg EW team = M4s + M249).</li>
+<li><strong>Supports Communications</strong> — timely, accurate reporting (PACE, BLOS).</li>
+</ol>
+<h3 id="172-requirements-vs-considerations">17.2 Requirements vs. Considerations</h3>
+<ul>
+<li><strong>Requirements</strong> = the selection checklist; <strong>Considerations</strong> = factors that let you evaluate the requirements (mission-dependent).</li>
+<li><strong>Considerations:</strong> Terrain, Mobility, Sustainment, Duration, External Support, Equipment Capabilities, Enemy.</li>
+<li><strong>Terrain analysis acronym: OACOK</strong> — Obstacles, Avenues of Approach, Cover/Concealment, Observations/fields of fire, Key terrain.</li>
+<li><strong>Day of Supply (DOS):</strong> standard measure of average daily supply expenditure.</li>
+</ul>
+<h3 id="173-key-inputs">17.3 Key Inputs</h3>
+<ul>
+<li><strong>Enemy EOB</strong> (higher-level context — the "enemy SITEMP in the EMS") and the <strong>SOI list</strong> (specific target frequencies) are the <strong>two most important documents</strong> for an EW mission.</li>
+<li>Tools: <strong>Maps</strong> (map recon) + <strong>Simulation devices</strong> (every EW PLT has one; requires power) → analog product.</li>
+</ul>
+<h3 id="174-ems-survey">17.4 EMS Survey</h3>
+<ul>
+<li>A broad observation of the EMS at a location using a <strong>spectrum analyzer</strong> to "sweep the EMS." Detected signals checked against operational products (friend/neutral/foe). <strong>An EW site is not established until an EMS survey is conducted.</strong></li>
+<li><strong>Survey steps (EWTS):</strong> move to good "view" of the EME → note terrain/location/weather → set analyzer to max viewable/assigned bandwidth → set <strong>max-hold</strong> to catch intermittent signals → capture/characterize bands → narrow to ~20–50 MHz → step through capturing each emission (center freq, bandwidth, S/N, receive power, shape, behavior) → log everything → save final report.</li>
+</ul>
+<hr />
+<h2 id="18-establishing-an-ew-hide-site-observation-post-112-17abolc">18. Establishing an EW Hide Site / Observation Post (112-17ABOLC)</h2>
+<h3 id="181-observation-post-op">18.1 Observation Post (OP)</h3>
+<ul>
+<li><strong>OP:</strong> a position from which observations are made or fires are directed/adjusted.</li>
+<li>Two selection questions: best location to get the information? best way to get it <strong>without being compromised</strong>?</li>
+<li><strong>Do NOT skyline observers</strong> — avoid hilltops; use the slope/side. Provide covered/concealed routes, overlapping fields of observation.</li>
+<li><strong>Occupation order:</strong> leader's recon → occupy → <strong>secure site (weapons emplaced, 360° security)</strong> → <strong>conduct EMS survey</strong> → OP established.</li>
+<li><strong>Manning:</strong> minimum <strong>2 soldiers</strong>; ≥12 hours requires team/squad + rotation plan.</li>
+</ul>
+<h3 id="182-camouflage-cover-concealment">18.2 Camouflage, Cover &amp; Concealment</h3>
+<ul>
+<li><strong>Visual camouflage</strong> priority — visual observation is the quickest way an OP becomes decisively engaged.</li>
+<li><strong>Hide Site:</strong> a concealed area for equipment/sleep/eat areas not immediately needed at the OP (more equipment at the OP = bigger target).</li>
+<li><strong>EMS Camouflage:</strong> EM waves interact 6 ways (Transmission, Reflection, Refraction, Diffraction, Absorption, Scattering).</li>
+<li><strong>Knife's Edge Diffraction:</strong> signal bends around an obstacle → you can be physically covered and still observe a signal (no visual LOS needed).</li>
+<li><strong>Terrain Masking:</strong> place comms equipment behind terrain so only friendly forces can see the signal.</li>
+<li><strong>Directional Antennas:</strong> decrease interception by the enemy DF team.</li>
+<li><strong>Remoting Antennas:</strong> separate the antenna from the radio (wired/wireless) → keep soldiers/equipment behind cover while transmitting.</li>
+<li><strong>Thermal Signatures:</strong> heat is visible in the IR band — manage thermal signature.</li>
+<li><strong>EW site establishment sequence (CEWTS):</strong> receive mission/TLPs → confirm PACE → enforce EP → maneuver &amp; establish site → conduct EW IAW <strong>AGM (Attack Guidance Matrix)</strong> → determine re-attack → assess EP → recover equipment &amp; sanitize site → provide <strong>EWMSNSUM</strong> report.</li>
+</ul>
+<hr />
+<h2 id="19-fundamentals-of-em-reconnaissance-112-17abolc">19. Fundamentals of EM Reconnaissance (112-17ABOLC)</h2>
+<h3 id="191-definitions">19.1 Definitions</h3>
+<ul>
+<li><strong>Reconnaissance:</strong> a mission to obtain information about enemy/area by visual observation or other detection methods.</li>
+<li><strong>Electromagnetic reconnaissance:</strong> detection, location, identification, and evaluation of foreign EM radiations — one of the most common EW PLT missions.</li>
+<li>Integrating processes: <strong>IPOE, Targeting, Information Collection.</strong></li>
+</ul>
+<h3 id="192-techniques-types-methods">19.2 Techniques, Types, Methods</h3>
+<ul>
+<li><strong>Techniques:</strong> <strong>Reconnaissance-push</strong> (thorough understanding → push assets to confirm/deny assumptions) vs. <strong>Reconnaissance-pull</strong> (uncertain situation → recon develops the picture and pulls the main body toward least resistance).</li>
+<li><strong>Types:</strong> Zone, Area, Route, Reconnaissance in Force, Special Reconnaissance.</li>
+<li><strong>Methods:</strong> Mounted, Dismounted (most detailed, most time-consuming), Aerial, Reconnaissance by Fire.</li>
+</ul>
+<h3 id="193-recon-vs-surveillance">19.3 Recon vs. Surveillance</h3>
+<ul>
+<li><strong>Surveillance:</strong> systematic <strong>passive, continuous</strong> observation. <strong>Reconnaissance:</strong> <strong>active</strong>, usually includes human participation and fighting for information. They complement/cue each other.</li>
+</ul>
+<h3 id="194-the-7-fundamentals-of-reconnaissance-memorize">19.4 The 7 Fundamentals of Reconnaissance (MEMORIZE)</h3>
+<ol>
+<li>Ensure continuous reconnaissance.</li>
+<li>Do not keep reconnaissance assets in reserve.</li>
+<li>Orient on the reconnaissance objective.</li>
+<li>Report all required information rapidly and accurately.</li>
+<li>Retain freedom of maneuver.</li>
+<li>Gain and maintain enemy contact.</li>
+<li>Develop the situation rapidly.</li>
+</ol>
+<ul>
+<li><strong>LTIOV (Latest Time Information is Of Value):</strong> deadline tied to a decision point.</li>
+</ul>
+<h3 id="195-ems-reporting">19.5 EMS Reporting</h3>
+<ul>
+<li>No universal format — units develop <strong>SOPs.</strong> Report content: <strong>Emitter Data</strong> (carrier freq, bandwidth, signal characteristics) and <strong>Geolocation Data</strong> (estimated location, Fix/Cut/LOB, CEP).</li>
+<li><strong>Report types:</strong> Stop Jamming Message, <strong>EW Frequency Deconfliction Message</strong> (prevents frequency fratricide), <strong>EW Mission Summary (EWMSNSUM)</strong>, <strong>EW Tasking Message</strong>, <strong>JSIR</strong> (Joint Spectrum Interference Resolution), <strong>MIJIFEEDER</strong> (Meaconing, Intrusion, Jamming, Interference — immediate tactical EMI report).</li>
+<li><strong>Non-standard quick reports:</strong> <strong>FAP (Frequency-Azimuth-Power)</strong> and <strong>EW GEO Report.</strong></li>
+<li><strong>Sensor-to-effect chain:</strong> sensor picks up signal → send <strong>Emitter report</strong> to SIGINT/CEMA → geolocate → <strong>tip/cue</strong> other ISR → match to SOI/EOB → <strong>SPOT report / fire mission</strong> → answer PIRs → enable CDR decisions.</li>
+</ul>
+<hr />
+<h2 id="20-ew-training-management-112-17abolc">20. EW Training Management (112-17ABOLC)</h2>
+<h3 id="201-metl">20.1 METL</h3>
+<ul>
+<li><strong>METL (Mission-Essential Task List):</strong> tasks an organization must train to be proficient in its mission. Determined by <strong>Department of the Army</strong> (with proponent input). Found at the <strong>Army Training Network (ATN).</strong></li>
+<li><strong>Reference sources:</strong> <strong>FMSWeb</strong> (MTOE — manning/equipment), <strong>ATN</strong> (METL &amp; CATS), <strong>CATS</strong> (Combined Arms Training Strategy) → contains the <strong>T&amp;EO (Training and Evaluation Outline).</strong></li>
+<li>If no METL: PL/PSG conduct a <strong>METL crosswalk</strong> (FM 7-0), aligning to the higher echelon's plan.</li>
+</ul>
+<h3 id="202-training-strategies">20.2 Training Strategies</h3>
+<ul>
+<li><strong>CEWTS (TC 3-12.1.2.2):</strong> Cyber &amp; EW Training Strategy — training standards; supports the 2018 NDS ("gain/maintain information advantage in cyberspace, space, and the EMS").</li>
+<li><strong>EWTS (FORSCOM):</strong> EW training/certification for units with Quick Reaction Capabilities (QRC); adaptive for near-peer/LSCO.</li>
+<li><strong>EW Program of Record equipment: EWPMT v1</strong>; most PLTs have COTS/GOTS (e.g., VROD/BEAST).</li>
+</ul>
+<h3 id="203-8-step-training-model">20.3 8-Step Training Model</h3>
+<ol>
+<li>Plan the training event → 2. Train and certify leaders → 3. Recon training sites → 4. Issue the OPORD → 5. Rehearse → 6. Train → 7. Conduct After Action Reviews → 8. Retrain.</li>
+</ol>
+<h3 id="204-troop-leading-procedures-tlps-8-steps">20.4 Troop Leading Procedures (TLPs) — 8 Steps</h3>
+<ol>
+<li>Receive the mission → 2. Issue a WARNORD → 3. Make a tentative plan → 4. Initiate movement → 5. Conduct reconnaissance → 6. Complete the plan → 7. Issue the order → 8. Supervise and refine.</li>
+</ol>
+<ul>
+<li><strong>METT-TC (I):</strong> Mission, Enemy, Terrain, Troops &amp; support available, Time available, Civil considerations, (Informational considerations). Used during mission analysis in Step 3.</li>
+<li>Time management: <strong>one-third / two-thirds rule</strong> (leader uses 1/3 of available time for planning, gives 2/3 to subordinates).</li>
+</ul>
+<hr />
+<h2 id="21-operating-in-a-contested-space-environment-ccoe">21. Operating in a Contested Space Environment (CCoE)</h2>
+<h3 id="211-space-fundamentals">21.1 Space Fundamentals</h3>
+<ul>
+<li>The Army is the <strong>largest user of space-enabled capabilities</strong>, integrated into all six WfFs. A BCT has <strong>&gt;3,200 GPS-enabled</strong> and <strong>&gt;300 SATCOM-enabled</strong> pieces of equipment.</li>
+<li><strong>D3SOE = Denied, Degraded, and Disrupted Space Operational Environment</strong> — a <strong>condition</strong> of the operational environment.</li>
+<li><strong>PNT (Positioning, Navigation, Timing):</strong> each GPS receiver needs LOS to a minimum of <strong>4 satellites</strong> (8–11 usually in view) for latitude, longitude, altitude, and receiver clock/time. GPS is an easy target — very weak signal (~50-watt light bulb), known frequencies, cheap jammers. Primary threat = <strong>ground-based jammers targeting receivers.</strong></li>
+<li>GNSS constellations: GPS, GALILEO, GLONASS, BeiDou, NavIC, QZSS.</li>
+</ul>
+<h3 id="212-threats-indicators">21.2 Threats &amp; Indicators</h3>
+<ul>
+<li><strong>Primary concern for Army tactical units:</strong> SATCOM jammers, GPS jammers, communications interference, EMP.</li>
+<li><strong>GPS interference indicators:</strong> DAGR "Jamming Detected" banner, loss of 4+ satellites, stale FFT icon, gumball/stoplight turning red/amber.</li>
+<li><strong>SATCOM indicators:</strong> static, bleed-over, loss of comms. <strong>PGM indicators:</strong> rounds miss or become duds.</li>
+</ul>
+<h3 id="213-mitigation-takeaways">21.3 Mitigation &amp; Takeaways</h3>
+<ul>
+<li><strong>EMCON, redundancy/layered capabilities, spectrum management/dynamic spectrum access, hardening, deception/signature management, alternate nav/timing, EW, training for degraded conditions, ISR/threat awareness.</strong></li>
+<li><strong>Takeaway framework: PREPARE &gt; RECOGNIZE &gt; REACT &gt; REPORT.</strong> No civilian GPS receivers; <strong>Encrypt!</strong>; know your equipment (contested vs. uncontested); do terrain analysis; have a PACE plan; body-shield/dig a hole; report EMI to S2/S6/EW.</li>
+<li><strong>Ukraine lessons:</strong> minimize emissions; reduce PNT dependency; reintroduce ground EW (<strong>Terrestrial Layer System — TLS</strong> primary EW/SIGINT weapon system); intensive drone/UAS use; <strong>Starlink</strong> resilience; geolocation risk from cell phones/social media (Russian <strong>Leer-3</strong> picks up 2,000+ phones within 3.7 mi).</li>
+</ul>
+<hr />
+<h2 id="22-case-study-2nd-nagorno-karabakh-war-2020-call-21-655">22. Case Study — 2nd Nagorno-Karabakh War 2020 (CALL 21-655)</h2>
+<ul>
+<li><strong>27 Sep–10 Nov 2020:</strong> Azerbaijan vs. Armenia over Nagorno-Karabakh (Artsakh). Decisive <strong>Azerbaijani victory</strong>; Russian-brokered cease-fire (2,000 peacekeepers).</li>
+<li>Azerbaijan overpowered Armenia with advanced <strong>UAS</strong> (Turkish <strong>Bayraktar TB2</strong>, Israeli <strong>Harop/SkyStriker</strong> loitering munitions) + SOF to identify targets for artillery/missiles/loitering munitions.</li>
+<li>Tactic: Soviet-era <strong>AN-2 biplane decoys</strong> forced Armenian air defenses to reveal themselves; TB2s above targeted radars/launchers. Armenian Soviet-era air defense couldn't detect TB2s at altitude. Armenia used Russian <strong>Polye-21 EW</strong> (disrupted UAS ~4 days but was targeted).</li>
+<li><strong>Information campaign:</strong> full-motion video of strikes released on social media to demoralize.</li>
+<li><strong>Lessons for ULO:</strong> expect UAS proliferation (120+ nations have military UAS); air defense must detect/defeat wide variety of UAS; <strong>master the fundamentals</strong> (camouflage, masking, dispersion, jam/disrupt sensors, multispectral decoys); aggressive information operations.</li>
+</ul>
+<hr />
+<h1 id="quick-reference-tables">QUICK-REFERENCE TABLES</h1>
+<h2 id="a-the-three-divisions-of-ew-at-a-glance">A. The Three Divisions of EW at a Glance</h2>
+<table>
+<thead>
+<tr>
+<th>Division</th>
+<th>Definition</th>
+<th>Key Sub-Tasks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EA (Attack)</strong></td>
+<td>EM/directed energy/anti-radiation weapons to degrade/neutralize/destroy enemy (a form of fires)</td>
+<td>Jamming, deception, intrusion, probing, EMP, countermeasures (chaff/decoys)</td>
+</tr>
+<tr>
+<td><strong>EP (Protection)</strong></td>
+<td>Protect friendly from friendly/neutral/enemy/natural interference</td>
+<td>Hardening, Masking, EMCON, Spectrum Mgmt, WARM, EMC</td>
+</tr>
+<tr>
+<td><strong>ES (Support)</strong></td>
+<td>Search/intercept/identify/locate radiated EM energy for immediate use</td>
+<td>EM Reconnaissance, EM Intelligence, EM Security, DF (LOB/Cut/Fix)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="b-direction-finding-sensors">B. Direction Finding Sensors</h2>
+<table>
+<thead>
+<tr>
+<th># of DF Sensors</th>
+<th>Result</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>LOB</strong></td>
+<td>Approximate azimuth to transmitter</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Cut</strong></td>
+<td>General location (LOB intersection)</td>
+</tr>
+<tr>
+<td>3+</td>
+<td><strong>Fix</strong></td>
+<td>Precise location via triangulation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="c-must-memorize-formulas">C. Must-Memorize Formulas</h2>
+<table>
+<thead>
+<tr>
+<th>Quantity</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Speed of light</td>
+<td>c = 3 × 10⁸ m/s</td>
+</tr>
+<tr>
+<td>Velocity</td>
+<td>V = λF</td>
+</tr>
+<tr>
+<td>Frequency</td>
+<td>F = c/λ ; F = 1/T</td>
+</tr>
+<tr>
+<td>Wavelength</td>
+<td>λ = c/F</td>
+</tr>
+<tr>
+<td>Decibels</td>
+<td>dB = 10 log(P_out/P_in)</td>
+</tr>
+<tr>
+<td>dBm</td>
+<td>10 log(P in mW)</td>
+</tr>
+<tr>
+<td>dBW</td>
+<td>10 log(P in W)</td>
+</tr>
+<tr>
+<td>dBW↔dBm</td>
+<td>dBW = dBm − 30</td>
+</tr>
+<tr>
+<td>dB → ratio</td>
+<td>ratio = 10^(N/10)</td>
+</tr>
+<tr>
+<td>Loss</td>
+<td>α(dB) = −g(dB)</td>
+</tr>
+<tr>
+<td>Resonant length</td>
+<td>L = C/(2f)</td>
+</tr>
+<tr>
+<td>Nyquist</td>
+<td>sample rate ≥ 2 × f_max</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d-db-shortcuts">D. dB Shortcuts</h2>
+<table>
+<thead>
+<tr>
+<th>Change to ratio</th>
+<th>Change in dB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>× 2</td>
+<td>+ 3 dB</td>
+</tr>
+<tr>
+<td>÷ 2</td>
+<td>− 3 dB</td>
+</tr>
+<tr>
+<td>× 10</td>
+<td>+ 10 dB</td>
+</tr>
+<tr>
+<td>÷ 10</td>
+<td>− 10 dB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="e-key-acronyms">E. Key Acronyms</h2>
+<p>CEMA (Cyberspace Electromagnetic Activities) · EW (Electromagnetic Warfare) · EA/EP/ES · EMS (Electromagnetic Spectrum) · EMSO (EM Spectrum Operations) · SMO (Spectrum Mgmt Operations) · EMCON (Emission Control) · WARM (Wartime Reserve Modes) · EMC (EM Compatibility) · EMI (EM Interference) · SIGINT · DF · LOB/Cut/Fix · CEP (Circular Error Probability) · EOB (Electronic Order of Battle) · SOI (Signal of Interest) · JRFL (Joint Restricted Frequency List) · JSIR · MIJIFEEDER · EWMSNSUM · IPOE · METT-TC(I) · OACOK · METL/CATS/T&amp;EO · TLP · PACE · FLOT · NAI/TAI · PIR/CCIR · LTIOV · EWPMT/SPEED/GIANT · TLS · D3SOE · PNT/GNSS · SEAD · RCIED/CREW · SDR · IQ · S/N.</p>
+<hr />
+<h1 id="self-test-question-bank">SELF-TEST QUESTION BANK</h1>
+<p><em>(Cover the answers; test yourself. Answers follow each question.)</em></p>
+<p><strong>History &amp; Doctrine</strong>
+1. What famous incident saw the first deliberate radio jamming? → <strong>1901 America's Cup Yacht Race.</strong>
+2. What conflict saw the first combat use of deliberate jamming? → <strong>Russo-Japanese War (1904).</strong>
+3. What does RADAR stand for? → <strong>RAdio Detection And Ranging.</strong>
+4. What was DoD's response to the RCIED threat? → <strong>The CREW program (Counter-RCIED Electronic Warfare).</strong>
+5. When did EW officially become part of the Cyber Branch? → <strong>1 October 2018.</strong>
+6. Name the three divisions of EW. → <strong>Electromagnetic Attack, Electromagnetic Protection, Electromagnetic Support.</strong>
+7. What is CEMA comprised of? → <strong>EW + Cyberspace Operations + Spectrum Management Operations.</strong>
+8. Which manual is the Army's core CEMA/EW publication? → <strong>FM 3-12.</strong></p>
+<p><strong>EMS &amp; Waves</strong>
+9. Frequency and wavelength are related how? → <strong>Inversely proportional</strong> (high freq = short λ).
+10. List the RF sub-bands low→high. → <strong>ELF, SLF, ULF, VLF, LF, MF, HF, VHF, UHF, SHF, EHF.</strong>
+11. What frequency band is GPS in? → <strong>UHF.</strong>
+12. Speed of light? → <strong>3 × 10⁸ m/s.</strong>
+13. Name the 4 core EM wave interactions. → <strong>Reflection, Refraction, Diffraction, Absorption.</strong>
+14. Doppler: moving toward the receiver produces what shift? → <strong>Blue shift (higher frequency).</strong>
+15. How many ionosphere layers day vs. night? → <strong>4 day, 2 night.</strong>
+16. An EM wave requires a medium — true or false? → <strong>False</strong> (self-propagating).</p>
+<p><strong>EW Math</strong>
+17. dB formula? → <strong>10 log(P_out/P_in).</strong>
+18. Doubling the power ratio changes dB by? → <strong>+3 dB.</strong>
+19. Convert 30 dBW to dBm. → <strong>60 dBm</strong> (dBm = dBW + 30).
+20. A device has P_in 10 W, P_out 1 W — loss in dB? → <strong>10 dB.</strong></p>
+<p><strong>Systems</strong>
+21. Full-duplex requires how many frequencies? → <strong>Two.</strong>
+22. Most common tone-squelch technology? → <strong>CTCSS.</strong>
+23. Jamming affects transmitters or receivers? → <strong>Receivers.</strong>
+24. Resonance occurs at what fraction of the target wavelength? → <strong>½ wavelength.</strong>
+25. Cross-polarization (vertical vs. horizontal antenna) causes what loss? → <strong>~30 dB.</strong>
+26. HackRF One frequency range? → <strong>1 MHz – 6 GHz.</strong>
+27. Nyquist sampling rate? → <strong>≥ 2× the highest frequency.</strong>
+28. Which antenna is the theoretical omnidirectional benchmark? → <strong>Isotropic (0 dBi).</strong></p>
+<p><strong>EA/EP/ES</strong>
+29. For a receiver to detect a signal, S/N must be? → <strong>Greater than 1.</strong>
+30. Spot vs. barrage jamming? → <strong>Spot = one specific frequency; Barrage = wide bandwidth, dispersed power.</strong>
+31. Optimum chaff length? → <strong>~½ wavelength of the victim radar frequency.</strong>
+32. The three types of electromagnetic deception? → <strong>Simulative, Manipulative, Imitative.</strong>
+33. Name the six EP tasks. → <strong>Hardening, Masking, EMCON, Spectrum Management, WARM, EMC.</strong>
+34. "The most basic protection from enemy EW is…" → <strong>Radio discipline.</strong>
+35. ES falls under which Title; SIGINT under which? → <strong>ES = Title 10; SIGINT = Title 50.</strong>
+36. What report is used for immediate tactical EMI? → <strong>MIJIFEEDER</strong> (formal resolution via <strong>JSIR</strong>).</p>
+<p><strong>Tactical Employment</strong>
+37. The 4 steps of IPOE? → <strong>Define environment, Describe effects, Evaluate threat, Determine threat COAs.</strong>
+38. The 5 EW site requirements? → <strong>LOS to objective, Accessible, Tenable, Secure, Supports Communications.</strong>
+39. Terrain analysis acronym? → <strong>OACOK.</strong>
+40. When is an EW site officially established? → <strong>After an EMS survey is conducted.</strong>
+41. The two most important documents for an EW mission? → <strong>Enemy EOB and the SOI list.</strong>
+42. The 7 fundamentals of reconnaissance (first three)? → <strong>Ensure continuous recon; do not keep recon in reserve; orient on the objective.</strong>
+43. Surveillance vs. reconnaissance? → <strong>Surveillance is passive/continuous; reconnaissance is active and fights for information.</strong>
+44. The 8 steps of TLPs (first three)? → <strong>Receive the mission, Issue a WARNORD, Make a tentative plan.</strong>
+45. METT-TC(I) stands for? → <strong>Mission, Enemy, Terrain, Troops/support, Time, Civil considerations, (Informational).</strong>
+46. Where is the EW PLT located in an MBCT? → <strong>The Multi-Functional Reconnaissance Company (MFRC).</strong>
+47. Default dismounted movement formation? → <strong>Wedge</strong> (360° security).
+48. Three movement techniques by contact likelihood? → <strong>Traveling, Traveling Overwatch, Bounding Overwatch.</strong>
+49. D3SOE stands for? → <strong>Denied, Degraded, and Disrupted Space Operational Environment.</strong>
+50. Minimum satellites a GPS receiver needs? → <strong>Four.</strong>
+51. Contested-space takeaway framework? → <strong>Prepare &gt; Recognize &gt; React &gt; Report.</strong>
+52. Who won the 2020 Nagorno-Karabakh War and with what decisive capability? → <strong>Azerbaijan, using UAS/loitering munitions (Bayraktar TB2, Harop) integrated with SOF and fires.</strong></p>
+<hr />
+<p><em>End of Study Guide. Study blocks 3 (EW Math) and 5 (EA/EP/ES) are historically the heaviest exam material — prioritize the formulas, the dB shortcuts, the jamming techniques, and the LOB/Cut/Fix definitions.</em></p>
+    </main>
+  </div>
+</div>
+<a href="#top" class="backtop" title="Back to top">&uarr;</a>
+</body>
+</html>
