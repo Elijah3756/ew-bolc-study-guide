@@ -120,6 +120,14 @@ blockquote{margin:14px 0; padding:10px 16px; background:var(--soft2); border-lef
   font-size:14px; color:#7a5410;}
 .exam-note b{color:#5c3d00;}
 @media print{#tab-math,#tab-nichea,#tab-nicheb{display:none !important;}}
+
+.mcopts{display:flex; flex-direction:column; gap:6px; margin-top:4px;}
+.mcopt{text-align:left; border:1.5px solid var(--line); background:#fff; padding:9px 13px; border-radius:8px;
+  cursor:pointer; font:inherit; font-size:14.5px; color:var(--ink); transition:border-color .12s, background .12s;}
+.mcopt:hover{border-color:var(--accent2);}
+.mcopt.mc-correct{border-color:var(--good); background:#eef9f1; font-weight:600; color:var(--good);}
+.mcopt.mc-wrong{border-color:var(--bad); background:#fdf0f0; color:var(--bad);}
+@media print{#tab-mca,#tab-mcb{display:none !important;}}
 </style>
 </head>
 <body>
@@ -129,6 +137,8 @@ blockquote{margin:14px 0; padding:10px 16px; background:var(--soft2); border-lef
   <button class="tabbtn" onclick="showTab('tab-math',this)">Math Drills</button>
   <button class="tabbtn" onclick="showTab('tab-nichea',this)">Practice A</button>
   <button class="tabbtn" onclick="showTab('tab-nicheb',this)">Practice B</button>
+  <button class="tabbtn" onclick="showTab('tab-mca',this)">MC A</button>
+  <button class="tabbtn" onclick="showTab('tab-mcb',this)">MC B</button>
   <button class="tabbtn" onclick="showTab('tab-sources',this)">Sources</button>
 </div></nav>
 <div class="wrap">
@@ -334,14 +344,14 @@ blockquote{margin:14px 0; padding:10px 16px; background:var(--soft2); border-lef
         <div class="hero">
           <h1>Electromagnetic Warfare (EW) BOLC</h1>
           <p>Comprehensive Exam Study Guide &middot; synthesized from all 22 course documents</p>
-          <span class="tag">UNCLASSIFIED &middot; guide &middot; 4 practice tests &middot; linked sources</span>
+          <span class="tag">UNCLASSIFIED &middot; guide &middot; 6 practice tests &middot; linked sources</span>
           <div class="dl-row">
             <a class="dl-btn" href="EW_BOLC_Study_Guide.pdf" download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
               Download PDF (print-ready)
             </a>
           </div>
-          <p class="dl-note">Practice tests: Core (101) · Math Drills · Practice A · Practice B — see the tabs above.</p>
+          <p class="dl-note">Tests: Core (101) · Math Drills · Practice A · Practice B · Multiple Choice A · Multiple Choice B — see the tabs above.</p>
         </div>
         
 <p><strong>Course:</strong> 17A/17-series Cyber &amp; Electromagnetic Warfare Basic Officer Leader Course (BOLC)
@@ -1598,6 +1608,20 @@ figure (units optional). Key formulas: <code>dB = 10·log₁₀(P_out/P_in)</cod
   <span class="qscore" id="score-nicheb"></span>
 </div>
 <div id="host-nicheb"></div></main></div>
+  <div id="tab-mca" class="tabpane"><main><h1 style="border-top:none;padding-top:0;">Multiple Choice A — Fundamentals, Math &amp; Systems</h1>
+<p>Click an option to lock your answer. The correct choice turns green immediately; some carry a one-line solution. Calculator problems included.</p>
+<div class="quiz-tools">
+  <button class="qbtn ghost" onclick="resetMC('mca')">Reset</button>
+  <span class="qscore" id="score-mca"></span>
+</div>
+<div id="host-mca"></div></main></div>
+  <div id="tab-mcb" class="tabpane"><main><h1 style="border-top:none;padding-top:0;">Multiple Choice B — Doctrine, EA/EP/ES &amp; Tactical</h1>
+<p>Click an option to lock your answer. The correct choice turns green immediately. Covers jamming, ES/SIGINT authorities, DF, EP tasks, and tactical employment.</p>
+<div class="quiz-tools">
+  <button class="qbtn ghost" onclick="resetMC('mcb')">Reset</button>
+  <span class="qscore" id="score-mcb"></span>
+</div>
+<div id="host-mcb"></div></main></div>
   <div id="tab-sources" class="tabpane"><main>
 <h1 style="border-top:none;padding-top:0;">Source Slide Decks</h1>
 <p>Every section of the study guide links back to the original lesson deck it was synthesized from.
@@ -1679,6 +1703,44 @@ function scoreSet(sid){
   document.getElementById('score-'+sid).textContent = att ? `Score: ${right}/${att} checked · ${total} total` : '';
 }
 document.addEventListener('DOMContentLoaded', ()=>{ ['core','math','nichea','nicheb'].forEach(buildSet); });
+</script>
+<script>
+const MCSETS = {"mca": [{"b": "Wave & Math Fundamentals", "q": "The speed of light used in EW calculations is:", "opts": ["3\u00d710\u2076 m/s", "3\u00d710\u2078 m/s", "3\u00d710\u00b9\u2070 m/s", "1.5\u00d710\u2078 m/s"], "c": 1}, {"b": "Wave & Math Fundamentals", "q": "Frequency and wavelength are:", "opts": ["directly proportional", "inversely proportional", "unrelated", "always equal"], "c": 1, "sol": "\u03bb = c/f \u2014 as one rises the other falls."}, {"b": "Wave & Math Fundamentals", "q": "A power ratio of 2 corresponds to how many dB?", "opts": ["2 dB", "3 dB", "6 dB", "10 dB"], "c": 1, "sol": "10\u00b7log\u2081\u2080(2) \u2248 3 dB \u2014 the doubling rule."}, {"b": "Wave & Math Fundamentals", "q": "Multiplying a power ratio by 10 changes its value by:", "opts": ["+3 dB", "+6 dB", "+10 dB", "\u00d710 dB"], "c": 2}, {"b": "Wave & Math Fundamentals", "q": "The conversion rule between references is dBW = dBm \u2212:", "opts": ["10", "20", "30", "100"], "c": 2}, {"b": "Wave & Math Fundamentals", "q": "A signal of 100 mW expressed in dBm is:", "opts": ["10 dBm", "20 dBm", "30 dBm", "100 dBm"], "c": 1, "sol": "10\u00b7log\u2081\u2080(100) = 20 dBm."}, {"b": "Wave & Math Fundamentals", "q": "The wavelength of a 300 MHz signal is:", "opts": ["0.1 m", "1 m", "3 m", "10 m"], "c": 1, "sol": "\u03bb = 3\u00d710\u2078 / 300\u00d710\u2076 = 1 m."}, {"b": "Wave & Math Fundamentals", "q": "A half-wave dipole cut for 150 MHz is about:", "opts": ["0.5 m", "1 m", "2 m", "5 m"], "c": 1, "sol": "L = c/2f = 3\u00d710\u2078/(2\u00b7150\u00d710\u2076) = 1 m."}, {"b": "Wave & Math Fundamentals", "q": "By Nyquist, the minimum sample rate to capture a 50 MHz signal is:", "opts": ["25 Msps", "50 Msps", "100 Msps", "500 Msps"], "c": 2, "sol": "\u2265 2 \u00d7 f_max = 100 Msps."}, {"b": "EMS & Propagation", "q": "GPS operates in which frequency band?", "opts": ["HF", "VHF", "UHF", "ELF"], "c": 2}, {"b": "EMS & Propagation", "q": "Which band is used for one-way communication with submerged submarines?", "opts": ["ELF", "VHF", "SHF", "UHF"], "c": 0}, {"b": "EMS & Propagation", "q": "Radio sky waves are refracted back to Earth by the:", "opts": ["troposphere", "stratosphere", "ionosphere", "exosphere"], "c": 2}, {"b": "EMS & Propagation", "q": "The bending of a wave AROUND an obstacle is called:", "opts": ["reflection", "refraction", "diffraction", "absorption"], "c": 2}, {"b": "EMS & Propagation", "q": "The greatest loss of radio-wave energy is due to:", "opts": ["reflection", "absorption", "diffraction", "refraction"], "c": 1}, {"b": "EMS & Propagation", "q": "An EM wave moving toward a receiver shows a:", "opts": ["red shift", "blue shift", "no shift", "phase inversion"], "c": 1, "sol": "Closing distance = higher frequency = blue shift."}, {"b": "EMS & Propagation", "q": "An EM wave, unlike a mechanical wave, requires:", "opts": ["air", "water", "any medium", "no medium"], "c": 3, "sol": "EM waves are self-propagating."}, {"b": "Antennas & Systems", "q": "Antenna directional gain is measured in:", "opts": ["dBm", "dBW", "dBi", "watts"], "c": 2}, {"b": "Antennas & Systems", "q": "Antenna resonance occurs at what fraction of the target wavelength?", "opts": ["full wavelength", "one-half", "one-third", "double"], "c": 1}, {"b": "Antennas & Systems", "q": "Cross-polarization (vertical vs. horizontal antennas) causes a loss of about:", "opts": ["3 dB", "10 dB", "30 dB", "0 dB"], "c": 2, "sol": "Catastrophic 30 dB loss; circular-to-linear is only 3 dB."}, {"b": "Antennas & Systems", "q": "The most common tone-squelch technology is:", "opts": ["DTMF", "CTCSS", "DCS", "SELCALL"], "c": 1}, {"b": "Antennas & Systems", "q": "Full-duplex communication requires:", "opts": ["one frequency", "two frequencies", "no frequency", "three frequencies"], "c": 1}, {"b": "Antennas & Systems", "q": "The HackRF One SDR frequency range is:", "opts": ["1 MHz \u2013 6 GHz", "500 kHz \u2013 1.75 GHz", "24 MHz \u2013 1.7 GHz", "30 \u2013 512 MHz"], "c": 0}, {"b": "Antennas & Systems", "q": "Undersampling a signal produces:", "opts": ["oversampling", "aliasing", "interpolation", "modulation"], "c": 1}, {"b": "Antennas & Systems", "q": "The theoretical 0 dBi omnidirectional benchmark antenna is the:", "opts": ["dipole", "Yagi", "isotropic", "parabolic dish"], "c": 2}, {"b": "Antennas & Systems", "q": "The AN/PRC-150 radio operates in which band?", "opts": ["HF (3\u201330 MHz)", "VHF (30\u201388 MHz)", "UHF (225\u2013512 MHz)", "SHF"], "c": 0}], "mcb": [{"b": "EW Divisions & Jamming", "q": "Electromagnetic Warfare is comprised of which three divisions?", "opts": ["EA, EP, ES", "EA, EW, SIGINT", "EP, ES, SMO", "Cyber, EW, Space"], "c": 0}, {"b": "EW Divisions & Jamming", "q": "Electromagnetic Attack is considered a form of:", "opts": ["protection", "fires", "intelligence", "sustainment"], "c": 1}, {"b": "EW Divisions & Jamming", "q": "Jamming primarily affects:", "opts": ["transmitters", "receivers", "antennas", "power supplies"], "c": 1, "sol": "Raise noise at the receiver; a jammed unit can still transmit."}, {"b": "EW Divisions & Jamming", "q": "For a receiver to detect a signal, the signal-to-noise ratio must be:", "opts": ["less than 1", "equal to 1", "greater than 1", "zero"], "c": 2}, {"b": "EW Divisions & Jamming", "q": "Which jamming type covers a large bandwidth all at once?", "opts": ["spot", "barrage", "follower", "escort"], "c": 1}, {"b": "EW Divisions & Jamming", "q": "Which jamming type concentrates power on a single known frequency?", "opts": ["barrage", "sweep", "spot", "standoff"], "c": 2}, {"b": "EW Divisions & Jamming", "q": "Optimum chaff length is approximately ___ the victim radar's wavelength:", "opts": ["one-quarter", "one-half", "full", "double"], "c": 1}, {"b": "ES, SIGINT & DF", "q": "Electromagnetic Support (ES) operates under which legal authority?", "opts": ["Title 10", "Title 32", "Title 50", "Title 18"], "c": 0}, {"b": "ES, SIGINT & DF", "q": "SIGINT operates under which legal authority?", "opts": ["Title 10", "Title 50", "Title 5", "Title 32"], "c": 1}, {"b": "ES, SIGINT & DF", "q": "A single DF sensor provides a:", "opts": ["fix", "cut", "line of bearing (LOB)", "grid"], "c": 2}, {"b": "ES, SIGINT & DF", "q": "A fix requires how many DF sensors?", "opts": ["1", "2", "3 or more", "exactly 5"], "c": 2}, {"b": "EP & Reporting", "q": "Which of these is NOT one of the six EP tasks?", "opts": ["EMCON", "Hardening", "Jamming", "WARM"], "c": 2, "sol": "Jamming is EA, not EP."}, {"b": "EP & Reporting", "q": "\"The most basic protection from enemy EW is ___\":", "opts": ["frequency hopping", "radio discipline", "encryption", "terrain masking"], "c": 1}, {"b": "EP & Reporting", "q": "All suspected jamming and EMI is formally reported via a:", "opts": ["SPOT report", "JSIR", "SALUTE report", "EOB"], "c": 1}, {"b": "Tactical Employment", "q": "The IPOE process has how many steps?", "opts": ["3", "4", "5", "7"], "c": 1}, {"b": "Tactical Employment", "q": "In an MBCT, the EW platoon resides in the:", "opts": ["HHC", "MFRC", "MICO", "Fires battalion"], "c": 1}, {"b": "Tactical Employment", "q": "The EW platoon is what size?", "opts": ["4\u20138", "9\u201312", "14\u201340", "50+"], "c": 2}, {"b": "Tactical Employment", "q": "A GPS receiver needs line of sight to a minimum of how many satellites?", "opts": ["2", "3", "4", "6"], "c": 2}, {"b": "Tactical Employment", "q": "Which is one of the seven fundamentals of reconnaissance?", "opts": ["Keep assets in reserve", "Gain and maintain enemy contact", "Avoid reporting", "Remain static"], "c": 1}, {"b": "Tactical Employment", "q": "The terrain-analysis acronym used for EW site selection is:", "opts": ["OACOK", "METT-TC", "SALUTE", "PACE"], "c": 0}, {"b": "Tactical Employment", "q": "An EW site is not officially established until you conduct a(n):", "opts": ["OPORD", "EMS survey", "rehearsal", "AAR"], "c": 1}, {"b": "Tactical Employment", "q": "The two most important documents for an EW mission are the:", "opts": ["OPORD & overlay", "Enemy EOB & SOI list", "PACE plan & CCIR", "map & compass"], "c": 1}, {"b": "Tactical Employment", "q": "Troop Leading Procedures (TLPs) have how many steps?", "opts": ["5", "6", "7", "8"], "c": 3}, {"b": "Case Study & Space", "q": "Which side won the 2020 Nagorno-Karabakh War decisively?", "opts": ["Armenia", "Azerbaijan", "Russia", "Turkey"], "c": 1, "sol": "Won with UAS + loitering munitions (Bayraktar TB2, Harop)."}, {"b": "Case Study & Space", "q": "D3SOE stands for Denied, Degraded, and ___ Space Operational Environment:", "opts": ["Disrupted", "Destroyed", "Deceived", "Delayed"], "c": 0}]};
+function buildMC(sid){
+  const qs = MCSETS[sid]; const host = document.getElementById('host-'+sid);
+  let blocks={}; qs.forEach((q,i)=>{(blocks[q.b]=blocks[q.b]||[]).push({...q,i});});
+  let html='';
+  for(const [b,items] of Object.entries(blocks)){
+    html += `<h2 class="qblock-h">${b} <span style="color:var(--muted);font-weight:400;font-size:14px;">(${items.length})</span></h2>`;
+    items.forEach(q=>{
+      const rid=sid+'-'+q.i;
+      const opts=q.opts.map((o,oi)=>`<button class="mcopt" id="mc-${rid}-${oi}" onclick="pickMC('${sid}',${q.i},${oi})">${String.fromCharCode(65+oi)}.&nbsp; ${o}</button>`).join('');
+      const sol=q.sol?`<div class="qsol" id="mcs-${rid}" style="display:none">${q.sol}</div>`:'';
+      html += `<div class="qcard" id="qc-${rid}">
+        <p class="qtext"><span class="qnum">${q.i+1}.</span>${q.q}</p>
+        <div class="mcopts">${opts}</div>${sol}</div>`;
+    });
+  }
+  host.innerHTML = html;
+}
+function pickMC(sid,i,opt){
+  const q=MCSETS[sid][i], rid=sid+'-'+i, card=document.getElementById('qc-'+rid);
+  if(card.dataset.done) return; card.dataset.done='1';
+  const correct = opt===q.c;
+  document.getElementById('mc-'+rid+'-'+opt).classList.add(correct?'mc-correct':'mc-wrong');
+  document.getElementById('mc-'+rid+'-'+q.c).classList.add('mc-correct');
+  card.classList.add(correct?'correct':'incorrect');
+  const s=document.getElementById('mcs-'+rid); if(s) s.style.display='block';
+  scoreMC(sid);
+}
+function resetMC(sid){ buildMC(sid); document.getElementById('score-'+sid).textContent=''; }
+function scoreMC(sid){
+  const total=MCSETS[sid].length;
+  const right=document.querySelectorAll('#host-'+sid+' .qcard.correct').length;
+  const ans=document.querySelectorAll('#host-'+sid+' .qcard.correct, #host-'+sid+' .qcard.incorrect').length;
+  document.getElementById('score-'+sid).textContent = ans ? `Score: ${right}/${ans} answered · ${total} total` : '';
+}
+document.addEventListener('DOMContentLoaded', ()=>{ ['mca','mcb'].forEach(buildMC); });
 </script>
 </body>
 </html>
